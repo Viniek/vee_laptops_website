@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import './Admin.css'
+import { NavLink } from 'react-router-dom';
+
+
+
 function Admin() {
   return (
-    <div>Admin</div>
+   <>
+      <div className='AdminNav'>
+      <NavLink to="/AdminHome" className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
+        <NavLink to="/users" className={({ isActive }) => (isActive ? 'active' : '')}>AdminUsers</NavLink>      
+        <NavLink to="/AddAdmin" className={({ isActive }) => (isActive ? 'active' : '')}>AddAdmin</NavLink>
+        <NavLink to="/PostProduct" className={({ isActive }) => (isActive ? 'active' : '')}>PostProduct</NavLink>
+      </div>
+
+
+          </>
+      
+  
   )
 }
 
 export default Admin
+
