@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id        String   @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String
+  role      String?  @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  cart      cart[]
+}
+
+model user_messages {
+  id           String @id @default(uuid())
+  first_name   String @map("first_name")
+  last_name    String @map("last_name")
+  email        String  @map("email")
+  location     String @map("location")
+  phone_number Int  @map("Phone_number")
+  subject      String @map("subject")
+  message      String @map("message")
+  @@map("user_messages")
+}
+
+model products {
+  id                 String @id @default(uuid())
+  productName        String @map("productName")
+  productPrice       Int @map("productPrice")
+  productDescription String @map("productDescription")
+  productImage       String @map("productImage")
+  productsRemaining Int?
+  cart               cart[]
+  @@map("products")
+}
+
+
+
+model cart {
+  id        String        @id @default(uuid())
+  userid    String
+  user        users @relation(fields: [userid], references: [id])
+  productid String
+  product   products      @relation(fields: [productid], references: [id])
+  creaeAt   DateTime      @default(now())
+}
