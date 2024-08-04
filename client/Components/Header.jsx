@@ -1,16 +1,16 @@
 import React from 'react'
 import './Components.css'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function Header() {
   return (
-  <>
-  <div className='navlink'>
-    <Link to="/Home">Home</Link>
-    <Link to="/Wishlist">Wishlist</Link>
-    <Link to="/Contactus">Contactus</Link>   
-    </div>
-  </>
+    <>
+      <div className='navlink'>
+        <NavLink exact to="/Home" activeClassName="active">Home</NavLink>
+        <NavLink to="/Wishlist" activeClassName="active">Wishlist</NavLink>
+        <NavLink to="/Contactus" activeClassName="active">Contactus</NavLink>
+      </div>
+    </>
   )
 }
 
