@@ -23,17 +23,14 @@ text-decoration: none;
         bottom: -2px; 
         width: 0;
         height: 2px; 
-        background-color: purple;
-        transition: width 3s ease-in-out;
+        background-color: rgb(243, 58, 228);
+        transition: width .9s ease-in-out;
       }
       
       .navlink a:hover::after {
         width: 100%;
       }
-      
-      .navlink a:hover {
-        color: rgb(243, 58, 228);
-      }
+    
       .navlink .active {
         color: rgb(243, 58, 228);
       }
