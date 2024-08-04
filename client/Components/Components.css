@@ -7,3 +7,8 @@
 color:purple;
 font-size:25px;
     }
+    .navlink a:hover{
+        color:rgb(243, 58, 228);
+        transition: .9s ease-in-out;
+        text-decoration: underline;        
+    }
