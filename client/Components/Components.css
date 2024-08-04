@@ -1,0 +1,9 @@
+.navlink{
+    display:flex;
+    flex-direction: row;
+    gap:3rem;
+    }
+    .navlink a{
+color:purple;
+font-size:25px;
+    }
