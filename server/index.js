@@ -1,28 +1,11 @@
 import express from "express";
-import cors from "cors";
-import { config } from "dotenv";
-import productsrouter from "./routes/Productsroutes";
+import productsrouter from "./routes/products.routes.js";
 
-config();
 const app = express();
-app.use(
-  express.json({
-    reviver: (key, value) =>
-      typeof value === "bigint" ? value.toString() : value,
-    replacer: (key, value) =>
-      typeof value === "bigint" ? value.toString() : value,
-  }),
-);
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  }),
-);
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/products",productsrouter)
 
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("server running");
 });
