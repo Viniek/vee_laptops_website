@@ -1,8 +1,7 @@
 import express from "express";
-
 import cors from "cors";
-
 import { config } from "dotenv";
+import productsrouter from "./routes/Productsroutes";
 
 config();
 const app = express();
@@ -21,6 +20,7 @@ app.use(
   }),
 );
 app.use(express.urlencoded({ extended: true }));
+app.use("/products",productsrouter)
 
 
 app.listen(3000, () => {
