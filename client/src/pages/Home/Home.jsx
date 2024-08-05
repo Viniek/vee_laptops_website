@@ -5,6 +5,8 @@ import './Home.css';
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const user = useUserStore((state) => state.user);
 
   useEffect(() => {
@@ -15,6 +17,9 @@ function Home() {
         setProducts(response.data);
       } catch (error) {
         console.error("An error occurred while fetching products:", error);
+        setError("An error occurred while fetching products.");
+      } finally {
+        setLoading(false);
       }
     }
     getAllItems();
@@ -22,7 +27,16 @@ function Home() {
 
   const addToCart = (product) => {
     console.log(`Added ${product.productName} to cart`);
+    // Add logic to update the cart state or make an API call to add the item to the cart
   };
+
+  if (loading) {
+    return <p>Loading products...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <div className='products-container'>
