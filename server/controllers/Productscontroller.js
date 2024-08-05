@@ -38,3 +38,20 @@ export const getAllProducts=async (req,res)=>{
     console.log(error.message);
   }
 }
+
+export async function DeleteProduct(req, res){
+  const {id} = req.params;
+try {
+  const productExist = await prisma.products.findFirst({where:{id:id}})
+  if(!productExist){
+    return res.status(400).json({success:false, message:"Product not found"})
+  }
+  await prisma.products.delete({where:{id:id}})
+  return res.status(200).json({success:true, message:"product deleted"})
+  
+} catch (error) {
+  
+  console.log(error.message);
+  return response.status(500).json({success:false, message:"Internal server error!"})
+}
+}
