@@ -6,5 +6,5 @@ function Contactus() {
     <div>Contactus</div>
   )
 }
-
+ 
 export default Contactus
