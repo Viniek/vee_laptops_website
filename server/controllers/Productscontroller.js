@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { response } from "express";
 const prisma = new PrismaClient();
 
 export async function createProduct(request, response) {
@@ -54,4 +55,19 @@ try {
   console.log(error.message);
   return response.status(500).json({success:false, message:"Internal server error!"})
 }
+}
+
+export async function getOneProduct(req, res){
+  const {id} = req.params;
+  try {
+    const OneProduct = await prisma.products.findFirst({where:{id:id}});
+    if(!OneProduct){
+      return response.status(400).json({success:false, message:"product not found"})
+    }
+    return res.status(200).json({success:true, data:OneProduct})
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({success:false, message:"Internal server error!"})
+    
+  }
 }
