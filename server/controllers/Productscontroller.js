@@ -71,3 +71,31 @@ export async function getOneProduct(req, res){
     
   }
 }
+
+export async function updateProduct(req, res){
+  const {id} = req.params;
+  const {productName, productPrice, productDescription,productImage,productsRemaining} =req.body;
+  console.log(req.body);
+  try {
+    const ProductExists = await prisma.products.findFirst({where:{id}})
+    if(!ProductExists){
+      return res.status(400).json({success:false, message:"product not found"})
+    }
+    const data ={};
+    if(productName !== undefined)data.productName = productName;
+    if(productPrice !== undefined)data.productPrice = productPrice;
+    if(productDescription !== undefined)data.productDescription = productDescription;
+    if(productImage !== undefined)data.productImage = productImage;
+    if(productsRemaining !== undefined)data.productsRemaining = productsRemaining;
+
+    const updateProduct = await prisma.products.update({
+      where:{id:id},
+      data:data
+    });
+    return response.status(200).json({success:true, message:"product pdated", data:updateProduct})
+
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({success:false, message:"Internal server error!"})
+  }
+}
