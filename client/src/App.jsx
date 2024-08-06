@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Wishlist from './pages/Wishlist/Wishlist';
 import Contactus from './pages/Contactus/Contactus';
@@ -8,7 +8,7 @@ import CreateAccount from './pages/login/CreateAccount';
 import Admin from '../Components/AdminNav/Admin';
 import SignIn from './pages/login/SignIn';
 import AdminHome from './pages/Admin/AdminHome';
-import AdminUsers from '../src/pages/Admin/AdminUsers'
+import AdminUsers from './pages/Admin/AdminUsers';
 import AddAdmin from './pages/Admin/AddAdmin';
 import PostProduct from './pages/Admin/PostProduct';
 
@@ -16,6 +16,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <ConditionalAdminNav />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/SignIn" element={<SignIn />} />  
@@ -26,11 +27,16 @@ function App() {
         <Route path="/CreateAccount" element={<CreateAccount />} />              
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/contactus" element={<Contactus />} />
-        <Route path="/Admin" element={<Admin />} />
         <Route path="/" element={<Home />} /> 
       </Routes>
     </Router>
   );
+}
+
+function ConditionalAdminNav() {
+  const location = useLocation();
+  const isAdminPath = location.pathname.startsWith('/Admin') || location.pathname.startsWith('/AdminHome') || location.pathname.startsWith('/AdminUsers') || location.pathname.startsWith('/AddAdmin') || location.pathname.startsWith('/PostProduct');
+  return isAdminPath ? <Admin /> : null;
 }
 
 export default App;

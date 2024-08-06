@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
+import Admin from '../../../Components/AdminNav/Admin';
 // import './Admin.css'
 
 function AdminHome() {
