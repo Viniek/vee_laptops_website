@@ -6,7 +6,7 @@
     align-items: center;
     padding: 2rem;
     margin-top: 5rem; /* Increase space between AdminNav and Header */
-    position: fixed;
+    position: fixed;    
     top: 0;
     width: 100%;
     background-color: white;
