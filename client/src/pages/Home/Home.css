@@ -1,4 +1,4 @@
-/* .products-container {
+.products-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -32,4 +32,4 @@
   .product button:hover {
     background-color: #218838;
   }
-   */
+  
