@@ -7,9 +7,12 @@ function AdminHome() {
 const[products,setProducts]=useState([]);
 const[loading,setLoading]=useState(true);
 const [error, setError] = useState(null);
+const[requests,setRequests]=useState([]);
+const[showRequests,SetShowRequests]=useState(false);
+const[totalProducts,setTotalProducts]=useState(0);
 
 useEffect(() => {
-  async function getAllItems(){
+  async function getAllProducts(){
     try {
       const response=await axios.get("http://localhost:4000/products/AllProducts")
       console.log(response);
@@ -22,8 +25,18 @@ useEffect(() => {
     } 
  
   }
-  getAllItems();
+  getAllProducts();
 }, []);
+
+const handleDeleteProduct= async(id)=>{
+  try {
+    await axios.delete(`http://localhost:4000/products/DeleteProduct/${id}`)
+    setProducts((prevProducts)=>prevProducts.filter((products)=>products.id!==id));
+    setTotalProducts((prevTotal)=>prevTotal -1);
+  } catch (error) {
+    console.error("An error occured while deleting Product...",error)
+  }
+}
   return (
   <>
    <div className='products-container'>
@@ -40,7 +53,7 @@ useEffect(() => {
 
            <div className='adminbuttons'>
            <button onClick={() => addToCart(product)}>Edit</button>
-            <button onClick={() => addToCart(product)}>Delete</button>
+           <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
            </div>
           </div>
         ))
