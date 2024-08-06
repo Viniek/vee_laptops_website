@@ -41,9 +41,9 @@
 
 // export default Header;
 import React, { useState, useEffect } from "react";
-import './Components.css';
+import './Header.css'
 import { NavLink } from 'react-router-dom';
-import useUserStore from "../store/useUserStore";
+import useUserStore from "../../store/useUserStore";
 import { useNavigate } from "react-router-dom";
 
 function Header() {

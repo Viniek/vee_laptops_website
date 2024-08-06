@@ -1,0 +1,26 @@
+.AdminNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8; 
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); 
+    padding: 10px;
+  }
+  
+  .AdminNav a {
+    margin: 10px 0;
+    text-decoration: none;
+    color: #333; 
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .AdminNav a.active {
+    background-color: #007bff; 
+    color: #fff; 
+  }
+  
