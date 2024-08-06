@@ -44,7 +44,32 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    padding:1rem;
+    gap:1rem;
+    padding-left: 2rem;
+ 
   }
-  
+  .adminbuttons button{
+    background-color: red;
+  }
+.editbtn{
+
+background-color: rgb(145, 7, 145);
+color: white;
+padding: .6rem 2rem;
+border: 2px pink solid;
+border-radius: 20px;
+}
+.editbtn a{
+  text-decoration: none;
+}
+ .AddproductContainer{
+  background-color: #eee;
+  border:.3px rgb(190, 184, 184) solid;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  font-weight:900;
+ }
   

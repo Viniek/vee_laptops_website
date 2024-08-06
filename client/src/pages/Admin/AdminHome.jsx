@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import Admin from '../../../Components/AdminNav/Admin';
 import '../../../Components/AdminNav/Admin.css'
 
@@ -10,6 +11,13 @@ const [error, setError] = useState(null);
 const[requests,setRequests]=useState([]);
 const[showRequests,SetShowRequests]=useState(false);
 const[totalProducts,setTotalProducts]=useState(0);
+const[form,setForm]=useState({
+  productImage:"",
+  productName:'',
+  productPrice:"",
+  productDescription:"",
+  productsRemaining:""
+})
 
 useEffect(() => {
   async function getAllProducts(){
@@ -28,6 +36,19 @@ useEffect(() => {
   getAllProducts();
 }, []);
 
+
+
+const handleEditProduct=(products)=>{
+  setForm({
+    productImage:"",
+    productName:'',
+    productPrice:"",
+    productDescription:"",
+    productsRemaining:""
+  });
+}
+
+
 const handleDeleteProduct= async(id)=>{
   try {
     await axios.delete(`http://localhost:4000/products/DeleteProduct/${id}`)
@@ -39,7 +60,7 @@ const handleDeleteProduct= async(id)=>{
 }
   return (
   <>
-   <div className='products-container'>
+   <section className='products-container'>
       {products && products.length > 0 ? (
         products.map((product) => (
           <div key={product.id} className='product'>
@@ -52,7 +73,9 @@ const handleDeleteProduct= async(id)=>{
 
 
            <div className='adminbuttons'>
-           <button onClick={() => addToCart(product)}>Edit</button>
+           <Link to={`/EditProduct/${product.id}`} className="editbtn"> Edit</Link>
+                      
+              
            <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
            </div>
           </div>
@@ -60,7 +83,9 @@ const handleDeleteProduct= async(id)=>{
       ) : (
         <p>No products available...</p>
       )}
-    </div>
+
+      <div className='AddproductContainer'>+</div>
+    </section>
   </>
   )
 }

@@ -3,14 +3,16 @@
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
+    
   }
   
   .product {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 20px;
+    padding: 3rem;
     text-align: center;
     width: 200px;
+    
   }
   
   .product img {
@@ -27,10 +29,11 @@
     color: white;
     border: none;   
     cursor: pointer; 
-    background-color:rgb(145, 7, 145);;
+    background-color:rgb(145, 7, 145);
   }
   
   .product button:hover {
     background-color: rgb(87, 5, 87);
   }
+
   
