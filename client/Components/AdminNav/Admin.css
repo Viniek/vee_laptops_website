@@ -40,4 +40,11 @@
   .AdminNav .active {
     color: rgb(243, 58, 228);
   }
+  .adminbuttons{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:1rem;
+  }
+  
   
