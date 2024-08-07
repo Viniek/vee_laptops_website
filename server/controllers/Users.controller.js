@@ -77,3 +77,30 @@ export const deleteUser=async (req, res) =>{
       res.status(500).json({  message: "Internal server error!" });
     }
   }
+
+  export const UpdateUser=async(req, res)=> {
+    const { id } = req.params;
+    const { firstName,lastName,email, password,role } = req.body;
+    console.log(req.body);
+    try {
+      const UserExist = await prisma.users.findFirst({ where: { id: id } });
+      if (!UserExist) {
+        return res.status(400).json({ success: false, message: "User not found" });
+      }
+      const data = {};
+      if (firstName !== undefined) data.firstName = firstName;
+      if (lastName !== undefined) data.lastName = lastName;
+      if (email!== undefined) data.email = email;
+      if (password!== undefined) data.password = password;
+      if (role !== undefined) data.role = role;
+  
+      const updatedUser= await prisma.users.update({
+        where: { id: id },
+        data: data,
+      });
+      res.status(200).json({ success: true, message: "User updated", data: updatedUser });
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({ success: false, message: "Internal server error!" });
+    }
+  }
