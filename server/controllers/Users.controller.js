@@ -1,15 +1,55 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+import bcrypt from'bcrypt'
 
-export const getAllUsers=async (req,res)=>{
-    const response=await WebGLShaderPrecisionFormat.users.getMany();
+export const getAllUsers = async (req, res) => {   
     try {
-        if(!users){
-            res.status(404).json("message:User not found...")
-        }else{
-            res.status(200).json({users})
+        const users = await prisma.users.findMany(); 
+        if (users.length === 0) {
+            res.status(404).json({ message: "No users found." });
+        } else {
+            res.status(200).json({ users });
         }
     } catch (error) {
-        res.status(500).json("An error occured while fetching Users...")
+        console.error(error.message);
+        res.status(500).json({ message: "An error occurred while fetching users.", error: error.message });
     }
 }
+
+export const getSingleUser=async (req,res)=>{
+    const{id}=req.params;
+    try {
+        const users= await prisma.users.findFirst({where:{id:id}});
+        if(!users){
+            res.status(404).json({message:"Oops!User not found..."})
+        }else{
+            res.status(200).json(users)
+        }
+        res.status(200).json(users)
+    } catch (error) {
+        res.status(500).json({message:"Oops!An error Occured..."})
+        console.log(error.message);
+    }
+}
+
+export async function CreateUser(req,res){
+    const {firstName,lastName,email, password,role}=req.body;
+    const hashedPassword= bcrypt.hashSync(password,10)
+    try {
+     const users=await prisma.users.create({
+         data:{
+             firstName,
+             lastName,
+             email, 
+             password:hashedPassword,
+             role
+         }
+     
+     })
+     res.status(200).json(users)
+    } catch (error) {
+     res.status(500).json({message:"Oops!Error while creating user..."})
+     console.log(error.message);
+    }
+}
+

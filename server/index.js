@@ -1,5 +1,6 @@
 import express from "express";
 import productsrouter from "./routes/products.routes.js";
+import vee from "./routes/usersroutes.js";
 import cors from "cors"
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
@@ -17,8 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/products",productsrouter)
+app.use("/users",vee)
 
 
 app.listen(4000, () => {
   console.log("server running");
 });
+
