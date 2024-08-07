@@ -2,9 +2,17 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 import bcrypt from'bcrypt'
 
-export const getAllUsers = async (req, res) => {   
+export const getAllUsers = async (req, res) => {
     try {
-        const users = await prisma.users.findMany(); 
+        const users = await prisma.users.findMany({
+            select: {
+                id:true,
+                firstName: true, 
+                lastName: true,  
+                email: true,
+               role:true
+            }
+        });
         if (users.length === 0) {
             res.status(404).json({ message: "No users found." });
         } else {
@@ -15,6 +23,7 @@ export const getAllUsers = async (req, res) => {
         res.status(500).json({ message: "An error occurred while fetching users.", error: error.message });
     }
 }
+
 
 export const getSingleUser=async (req,res)=>{
     const{id}=req.params;
@@ -53,3 +62,18 @@ export async function CreateUser(req,res){
     }
 }
 
+export const deleteUser=async (req, res) =>{
+    const { id } = req.params;
+    try {
+       
+      const UserExist = await prisma.users.findFirst({ where: { id:id } });
+      if (!UserExist) {
+        return res.status(400).json({ message: "Oops!User not found..." });
+      }
+      await prisma.users.delete({ where: { id: id} });
+      res.status(200).json({ message: "User deleted successfully..." });
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({  message: "Internal server error!" });
+    }
+  }
