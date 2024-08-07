@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import Admin from '../../../Components/AdminNav/Admin';
 import '../../../Components/AdminNav/Admin.css'
+import EditProduct from './EditProduct';
 
 function AdminHome() {
 const[products,setProducts]=useState([]);
@@ -18,6 +19,20 @@ const[form,setForm]=useState({
   productDescription:"",
   productsRemaining:""
 })
+
+const fetchProducts = async () => {
+  // if (user.role === "admin") {
+    try {
+      const response = await axios.get("http://localhost:4000/products/AllProducts", { withCredentials: true });
+      setProducts(response.data);
+      setTotalProducts(response.data.length);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  // }
+};
+
+
 
 useEffect(() => {
   async function getAllProducts(){
@@ -36,7 +51,16 @@ useEffect(() => {
   getAllProducts();
 }, []);
 
-
+const handleAddProduct=async ()=>{
+  try{
+    await axios.post(`http://localhost:4000/products/AddProduct`,form);
+    fetchProducts();
+    console.log(response);
+  }catch(error){
+    console.error("Error adding Product...",error)
+    console.log(error.message);
+  }
+};
 
 const handleEditProduct=(products)=>{
   setForm({
@@ -73,7 +97,7 @@ const handleDeleteProduct= async(id)=>{
 
 
            <div className='adminbuttons'>
-           <Link to={`/EditProduct/${product.id}`} className="editbtn"> Edit</Link>
+           <Link to={`//EditProduct/${product.id}`} className="editbtn"> Edit</Link>
                       
               
            <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
@@ -84,7 +108,12 @@ const handleDeleteProduct= async(id)=>{
         <p>No products available...</p>
       )}
 
-      <div className='AddproductContainer'>+</div>
+    
+      {/* <Link to="/AddProduct" > */}
+        {/* <button className='AddproductContainer' onClick={handleAddProduct}></button> */}
+        {/* </Link> */}
+        <Link to="/AddProduct">
+        <button className="addProductbtn">Add Post</button></Link>
     </section>
   </>
   )

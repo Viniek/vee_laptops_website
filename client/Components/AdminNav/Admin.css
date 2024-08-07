@@ -1,42 +1,22 @@
 .AdminNav {
     display: flex;
-    flex-direction: row;
-    gap: 3rem;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+    flex-direction: column;
+    gap: 2rem;
     margin-top: 5rem; /* Increase space between AdminNav and Header */
     position: fixed;    
-    top: 0;
-    width: 100%;
-    background-color: white;
+    width: 20%;
+    background-color: #eee;
+    padding: 6rem;    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
+    height: 100vh;
+  }  
   
   .AdminNav a {
     position: relative;
     color: purple;
     text-decoration: none;
     font-size: 25px;
-  }
-  
-  .AdminNav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: rgb(243, 58, 228);
-    transition: width 0.9s ease-in-out;
-  }
-  
-  .AdminNav a:hover::after {
-    width: 100%;
-  }
-  
+  }  
   .AdminNav .active {
     color: rgb(243, 58, 228);
   }
@@ -52,7 +32,6 @@
     background-color: red;
   }
 .editbtn{
-
 background-color: rgb(145, 7, 145);
 color: white;
 padding: .6rem 2rem;
@@ -72,4 +51,6 @@ border-radius: 20px;
   font-size: 70px;
   font-weight:900;
  }
-  
+  .AddproductContainer a{
+    text-decoration: none;
+  }
