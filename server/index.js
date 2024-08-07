@@ -1,11 +1,13 @@
 import express from "express";
 import productsrouter from "./routes/products.routes.js";
-import vee from "./routes/usersroutes.js";
+import usersroutes from "./routes/usersroutes.js";
 import cors from "cors"
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 
+
 config();
+
 const app = express();
 app.use(
   cors({
@@ -18,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/products",productsrouter)
-app.use("/users",vee)
+app.use("/users",usersroutes)
 
 
 app.listen(4000, () => {

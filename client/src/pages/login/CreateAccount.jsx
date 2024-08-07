@@ -16,7 +16,7 @@ function CreateAccount() {
       
       const response = await axios.post(
         "http://localhost:4000/users/CreateUser",
-        values,
+        values,{withCredentials:true}
       );
 
       console.log(response.data);
