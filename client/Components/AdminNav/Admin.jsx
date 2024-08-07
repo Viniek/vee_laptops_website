@@ -12,7 +12,7 @@ function Admin() {
       <NavLink to="/AdminHome" className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
       <NavLink to="/AdminUsers" className={({ isActive }) => (isActive ? 'active' : '')}>AdminUsers</NavLink>     
         <NavLink to="/AddAdmin" className={({ isActive }) => (isActive ? 'active' : '')}>AddAdmin</NavLink>
-        <NavLink to="/PostProduct" className={({ isActive }) => (isActive ? 'active' : '')}>PostProduct</NavLink>
+        <NavLink to="/AddProduct" className={({ isActive }) => (isActive ? 'active' : '')}>PostProduct</NavLink>
       </div>
 
       <p>b</p>

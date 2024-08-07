@@ -58,7 +58,7 @@ export async function CreateUser(req,res){
          }
      
      })
-     res.status(200).json(users)
+     res.status(200).json({success:true,data:users,message:"user created successfully.."})
     } catch (error) {
      res.status(500).json({message:"Oops!Error while creating user..."})
      console.log(error.message);

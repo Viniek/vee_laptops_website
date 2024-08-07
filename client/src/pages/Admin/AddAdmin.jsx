@@ -1,5 +1,5 @@
 import Admin from '../../../Components/AdminNav/Admin'
-import "./Login.css";
+import "../../../Components/AdminNav/Admin.css"
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,10 +20,12 @@ function AddAdmin() {
         values,{withCredentials:true}
       );
 
-      console.log(response.data);
+      console.log(response.data.success);
 
-      if (response.data.success) {
-        navigate("/SignIn");
+      if (response.data.success===true) {
+        navigate("/AdminUsers");
+        formik.resetForm();
+        toast("Admin created successfully...")
       } else {
         setError(response.data.message);
       }
@@ -164,12 +166,9 @@ function AddAdmin() {
           </div>
 
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "Please wait..." : "Signin"}
+            {loading ? "Please wait..." : "Add Admin"}
           </button>
 
-          <p>
-            Already have an account? <Link to="/SignIn">Sign in here</Link>
-          </p>
           {error && <p className="error">{error}</p>}
         </form>
       </section>

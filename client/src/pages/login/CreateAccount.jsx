@@ -79,9 +79,10 @@ function CreateAccount() {
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Sign up</h2>
+        <h2>Create  Your Account Here!!</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
+            <label for="firstname">First Name</label><br/>
             <input
               type="text"
               name="firstName"
@@ -98,6 +99,7 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
+            <label for="llastname">Last Name</label><br/>
             <input
               type="text"
               name="lastName"
@@ -114,6 +116,7 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
+            <label for="email">Email Address</label><br/>
             <input
               type="email"
               name="email"
@@ -130,6 +133,7 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
+            <label for="password">Password</label><br/>
             <input
               type="password"
               name="password"
@@ -146,6 +150,7 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
+            <label for="confirmpassword">Confirm Password</label><br/>
             <input
               type="password"
               name="confirmpassword"
