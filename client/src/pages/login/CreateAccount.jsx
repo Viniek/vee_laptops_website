@@ -163,7 +163,7 @@ function CreateAccount() {
           </div>
 
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "Please wait..." : "Signup"}
+            {loading ? "Please wait..." : "Signin"}
           </button>
 
           <p>

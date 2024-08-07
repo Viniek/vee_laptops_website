@@ -36,11 +36,13 @@ function SignIn() {
         changeuserInformation(data.data);
 
         if (data.data.role === "admin") {
-          navigate("/Admin");
-        } else if (data.data.role === "seller") {
-          navigate("/Sellers");
-        } else {
-          navigate("/Wishlist");
+          navigate("/AdminHome");
+        } 
+        // else if (data.data.role === "seller") {
+        //   navigate("/Sellers");
+        // } 
+        else {
+          navigate("/home");
         }
       } else {
         toast(data.message, { theme: "failure" });
@@ -55,17 +57,17 @@ function SignIn() {
 
   const formik = useFormik({
     initialValues: {
-      emailaddress: "",
+      email: "",
       password: "",
     },
     onSubmit: handleSubmit,
     validate: (formValues) => {
       let errors = {};
 
-      if (formValues.emailaddress === "") {
-        errors.emailaddress = "Email address required";
-      } else if (!formValues.emailaddress.includes("@")) {
-        errors.emailaddress = "Enter a valid email...";
+      if (formValues.email === "") {
+        errors.email = "Email address required";
+      } else if (!formValues.email.includes("@")) {
+        errors.email = "Enter a valid email...";
       }
 
       if (formValues.password === "") {
@@ -79,20 +81,20 @@ function SignIn() {
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Sign In</h2>
+        <h2>Sign Into your Account</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
             <input
               type="text"
-              name="emailaddress"
-              id="emailaddress"
+              name="email"
+              id="email"
               placeholder="Email address..."
-              value={formik.values.emailaddress}
+              value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.emailaddress && formik.errors.emailaddress && (
-              <p className="errorp">{formik.errors.emailaddress}</p>
+            {formik.touched.email && formik.errors.email && (
+              <p className="errorp">{formik.errors.email}</p>
             )}
           </div>
 
@@ -112,7 +114,7 @@ function SignIn() {
           </div>
 
           <button type="submit" disabled={loading}>
-            {loading ? "Loading..." : "Sign In"}
+            {loading ? "Loading..." : "Sign up"}
           </button>
         </form>
         {error && <p className="errorp">{error}</p>}
