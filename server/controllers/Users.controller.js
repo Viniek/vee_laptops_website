@@ -20,7 +20,7 @@ export const getAllUsers = async (req, res) => {
         if (users.length === 0) {
             res.status(404).json({ message: "No users found." });
         } else {
-            res.status(200).json({ users });
+             return res.status(200).json({ success:true, data: users });
         }
     } catch (error) {
         console.error(error.message);
@@ -32,13 +32,11 @@ export const getAllUsers = async (req, res) => {
 export const getSingleUser=async (req,res)=>{
     const{id}=req.params;
     try {
-        const users= await prisma.users.findFirst({where:{id:id}});
-        if(!users){
-            res.status(404).json({message:"Oops!User not found..."})
-        }else{
-            res.status(200).json(users)
+        const user= await prisma.users.findFirst({where:{id:id}});
+        if(!user){
+          return  res.status(404).json({message:"Oops!User not found..."})
         }
-        res.status(200).json(users)
+        res.status(200).json({success:true, data:user,message:"user fetched successfully"})
     } catch (error) {
       console.log(error.message);
        return res.status(500).json({message:"Oops!An error Occured..."})
@@ -79,7 +77,7 @@ export const deleteUser=async (req, res) =>{
       res.status(200).json({ message: "User deleted successfully..." });
     } catch (error) {
       console.log(error.message);
-      res.status(500).json({  message: "Internal server error!" });
+     return res.status(500).json({  message: "Internal server error!" });
     }
   }
 

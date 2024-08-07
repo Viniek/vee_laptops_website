@@ -54,3 +54,6 @@ border-radius: 20px;
   .AddproductContainer a{
     text-decoration: none;
   }
+  .usersContainer{
+    margin-left: 30%;
+  }

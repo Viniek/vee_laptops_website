@@ -21,7 +21,7 @@ const[form,setForm]=useState({
 })
 
 const fetchProducts = async () => {
-  // if (user.role === "admin") {
+  if (user.role === "admin") {
     try {
       const response = await axios.get("http://localhost:4000/products/AllProducts", { withCredentials: true });
       setProducts(response.data);
@@ -29,7 +29,7 @@ const fetchProducts = async () => {
     } catch (error) {
       console.error("Error fetching products:", error);
     }
-  // }
+  }
 };
 
 
@@ -97,7 +97,7 @@ const handleDeleteProduct= async(id)=>{
 
 
            <div className='adminbuttons'>
-           <Link to={`//EditProduct/${product.id}`} className="editbtn"> Edit</Link>
+           <Link to={`/EditProduct/${product.id}`} className="editbtn"> Edit</Link>
                       
               
            <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>

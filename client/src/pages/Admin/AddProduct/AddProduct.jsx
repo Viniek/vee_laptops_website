@@ -75,6 +75,7 @@ function AddProduct() {
                 formik.resetForm();
                 setUploadedImageUrl("");
                 setSelectedFile(null); 
+                navigate('/AdminHome'); 
             } else {
                 
                 toast("Product created successfully...");

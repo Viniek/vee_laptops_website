@@ -38,9 +38,9 @@ function SignIn() {
         if (data.data.role === "admin") {
           navigate("/AdminHome");
         } 
-        // else if (data.data.role === "seller") {
-        //   navigate("/Sellers");
-        // } 
+        else if (data.data.role === "seller") {
+          navigate("/Sellers");
+        } 
         else {
           navigate("/home");
         }
