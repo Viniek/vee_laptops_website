@@ -4,55 +4,62 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function CreateAccount(){
+function CreateAccount() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-//   const handleSubmit = async (values) => {
-//     // try {
-//     //   setLoading(true);
-//     //   setError("");
-     
-//     //   const response = await axios.post(
-//     //     "http://localhost:5000/api/users/createUser",
-//     //     values,
-//     //   );
+  const handleSubmit = async (values) => {
+    try {
+      setLoading(true);
+      setError("");
+      
+      const response = await axios.post(
+        "http://localhost:4000/users/CreateUser",
+        values,
+      );
 
-//     //   console.log(response.data);
+      console.log(response.data);
 
-//     //   if (response.data.success) {
-//     //     navigate("/Signin");
-//     //   } else {
-//     //     setError(response.data.message);
-//     //   }
-//     // } catch (e) {
-//     //   setError(e.message);
-//     // } finally {
-//     //   setLoading(false);
-//     // }
-//   };
+      if (response.data.success) {
+        navigate("/SignIn");
+      } else {
+        setError(response.data.message);
+      }
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
-      fullname: "",
-      emailaddress: "",
+      firstName: "",
+      lastName: "",
+      email: "",
       password: "",
-      confirmpassword: "",
+      role:""
     },
     onSubmit: handleSubmit,
     validate: (values) => {
       let errors = {};
-      if (values.fullname === "") {
-        errors.fullname = "Full name required.";
-      } else if (values.fullname.length < 3) {
-        errors.fullname = "Must have 3 characters or more.";
+      if (values.firstName === "") {
+        errors.firstName = "Full name required.";
+      } else if (values.firstName.length < 3) {
+        errors.firstName = "Must have 3 characters or more.";
       }
 
-      if (values.emailaddress === "") {
-        errors.emailaddress = "Email address required.";
-      } else if (!/\S+@\S+\.\S+/.test(values.emailaddress)) {
-        errors.emailaddress = "Enter a valid email.";
+      if (values.lastName === "") {
+        errors.lastName = "lastName required.";
+      } else if (values.lastName.length < 3) {
+        errors.lastName = "Must have 3 characters or more.";
+      }
+
+      if (values.email=== "") {
+        errors.email = "Email address required.";
+      } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+        errors.email = "Enter a valid email.";
       }
 
       if (values.password === "") {
@@ -72,37 +79,53 @@ function CreateAccount(){
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Create Account Here!!</h2>
-        <form >
+        <h2>Sign up</h2>
+        <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
             <input
               type="text"
-              name="fullname"
-              id="fullname"
-              placeholder="Full name e.g. vee..."
-              value={formik.values.fullname}
+              name="firstName"
+              id="firstName"
+              placeholder="firstName e.g. vee..."
+              value={formik.values.firstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               required
             />
-            {formik.touched.fullname && formik.errors.fullname && (
-              <p className="errorp">{formik.errors.fullname}</p>
+            {formik.touched.firstName && formik.errors.firstName && (
+              <p className="errorp">{formik.errors.firstName}</p>
+            )}
+          </div>
+
+          <div className="formfield">
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              placeholder="LastName e.g. vee..."
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              required
+            />
+            {formik.touched.lastName && formik.errors.lastName && (
+              <p className="errorp">{formik.errors.lastName}</p>
             )}
           </div>
 
           <div className="formfield">
             <input
               type="email"
-              name="emailaddress"
-              id="emailaddress"
+              name="email"
+              id="email"
               placeholder="Email address..."
-              value={formik.values.emailaddress}
+              value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               required
             />
-            {formik.touched.emailaddress && formik.errors.emailaddress && (
-              <p className="errorp">{formik.errors.emailaddress}</p>
+            {formik.touched.email && formik.errors.email && (
+              <p className="errorp">{formik.errors.email}</p>
             )}
           </div>
 
@@ -143,15 +166,14 @@ function CreateAccount(){
             {loading ? "Please wait..." : "Signup"}
           </button>
 
-          {/* <p>
-            Already have an account? <Link to="/Signin">Sign in here</Link>
-          </p> */}
-          {/* {error && <p className="error">{error}</p>} */}
+          <p>
+            Already have an account? <Link to="/SignIn">Sign in here</Link>
+          </p>
+          {error && <p className="error">{error}</p>}
         </form>
       </section>
-    
     </>
   );
 }
 
-export default CreateAccount
+export default CreateAccount;
