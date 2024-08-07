@@ -21,7 +21,7 @@ function SignIn() {
     try {
       setLoading(true);
       setError("false");
-      const response = await fetch(`${url_api}/api/users/signup`, {
+      const response = await fetch("http://localhost:4000/users/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,6 +29,7 @@ function SignIn() {
         body: JSON.stringify(values),
         credentials: "include",
       });
+      console.log(response.data);
       const data = await response.json();
       console.log(data.data);
       if (data.success) {
