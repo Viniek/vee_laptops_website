@@ -1,14 +1,11 @@
-
 import React, { useState } from "react";
 import "./Login.css";
-import toast,{toastConfig} from "react-simple-toasts";
-
+import toast, { toastConfig } from "react-simple-toasts";
 import "react-simple-toasts/dist/theme/dark.css";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import {url_api} from "../../../utils/config"
-import useUserStore from "../../../store/useUserStore";
-
+import { url_api } from "../../../utils/config";
+import useUserStore from "../../userStore";
 
 toastConfig({ theme: "Colored Themes" });
 
@@ -81,7 +78,7 @@ function SignIn() {
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Sign To your Account Here!!</h2>
+        <h2>Sign In</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
             <input

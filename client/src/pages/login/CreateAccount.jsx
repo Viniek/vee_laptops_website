@@ -4,34 +4,34 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function CreateAccount(){
+function CreateAccount() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-//   const handleSubmit = async (values) => {
-//     // try {
-//     //   setLoading(true);
-//     //   setError("");
-     
-//     //   const response = await axios.post(
-//     //     "http://localhost:5000/api/users/createUser",
-//     //     values,
-//     //   );
+  const handleSubmit = async (values) => {
+    try {
+      setLoading(true);
+      setError("");
+      
+      const response = await axios.post(
+        "http://localhost:5000/api/users/createUser",
+        values,
+      );
 
-//     //   console.log(response.data);
+      console.log(response.data);
 
-//     //   if (response.data.success) {
-//     //     navigate("/Signin");
-//     //   } else {
-//     //     setError(response.data.message);
-//     //   }
-//     // } catch (e) {
-//     //   setError(e.message);
-//     // } finally {
-//     //   setLoading(false);
-//     // }
-//   };
+      if (response.data.success) {
+        navigate("/Signin");
+      } else {
+        setError(response.data.message);
+      }
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -72,8 +72,8 @@ function CreateAccount(){
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Create Account Here!!</h2>
-        <form >
+        <h2>Sign up</h2>
+        <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
             <input
               type="text"
@@ -143,15 +143,14 @@ function CreateAccount(){
             {loading ? "Please wait..." : "Signup"}
           </button>
 
-          {/* <p>
+          <p>
             Already have an account? <Link to="/Signin">Sign in here</Link>
-          </p> */}
-          {/* {error && <p className="error">{error}</p>} */}
+          </p>
+          {error && <p className="error">{error}</p>}
         </form>
       </section>
-    
     </>
   );
 }
 
-export default CreateAccount
+export default CreateAccount;
