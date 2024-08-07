@@ -1,8 +1,8 @@
 import React,{useState,useEffect}from 'react'
-import useUserStore from '../../../store/useUserStore'; 
+import useUserStore from '../../../../store/useUserStore'; 
 import axios from 'axios'
-import Admin from '../../../Components/AdminNav/Admin';
-import '../../../Components/AdminNav/Admin.css'
+import Admin from '../../../../Components/AdminNav/Admin';
+import './AdminUsers.css'
 
 
 
@@ -42,11 +42,11 @@ function AdminUsers() {
 
   return (
     <>
- 
+ <h1 className='usersContainer'>Vee users</h1>
   <section className='usersContainer'>
-  rvmjjvjciooooobiiejijdjvnjnejuuehuoibit
+ 
 {users.map((user)=>(
-<div key ={users.id} classname='userss'>
+<div key ={users.id} className='users'>
 <p>{user.firstName}</p>
 <p>{user.lastName}</p>
 <p>{user.email }</p>

@@ -1,5 +1,5 @@
-import Admin from '../../../Components/AdminNav/Admin'
-import "../../../Components/AdminNav/Admin.css"
+import Admin from '../../../../Components/AdminNav/Admin'
+import './AddAdmin.css'
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
@@ -82,9 +82,10 @@ function AddAdmin() {
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Sign up</h2>
+        <h2>Add an Admin</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
+            <label for="firstName">First Name</label><br/>
             <input
               type="text"
               name="firstName"
@@ -101,6 +102,7 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
+            <label for="lastName">Last Name</label><br/>
             <input
               type="text"
               name="lastName"
@@ -117,6 +119,7 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
+            <label for="email">Email Address</label><br/>
             <input
               type="email"
               name="email"
@@ -133,6 +136,7 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
+            <label for="password">Password</label><br/>
             <input
               type="password"
               name="password"
@@ -149,6 +153,7 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
+            <label for="confirmpassword">Confirm Password</label><br/>
             <input
               type="password"
               name="confirmpassword"

@@ -8,8 +8,8 @@ import CreateAccount from './pages/login/CreateAccount';
 import Admin from '../Components/AdminNav/Admin';
 import SignIn from './pages/login/SignIn';
 import AdminHome from './pages/Admin/AdminHome';
-import AdminUsers from './pages/Admin/AdminUsers';
-import AddAdmin from './pages/Admin/AddAdmin';
+import AdminUsers from './pages/Admin/AdminUsers/AdminUsers'
+import AddAdmin from './pages/Admin/AddAdmin/AddAdmin';
 import Products from './pages/Products/Products';
 import EditProduct from './pages/Admin/EditProduct';
 import AddProduct from './pages/Admin/AddProduct/AddProduct';

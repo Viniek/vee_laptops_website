@@ -1,9 +1,26 @@
-.AddProduct{
-    margin-left: 20%;
-    min-width: 60%;
-    padding:2rem;
-}
 .AddProductForm{
-    margin-left: 20%;
-    /* min-width: 60%; */
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    gap:3rem;
+    justify-content: center;
+    
+}
+.AddProductForm input{
+width:70rem;
+padding:2rem;
+margin-bottom: 3rem;
+}
+.AddProductForm label{
+    font-weight: 550;
+}
+.AddProductForm form{   
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.AddProductForm button{
+    width:10rem;
+   padding:1rem;
 }
