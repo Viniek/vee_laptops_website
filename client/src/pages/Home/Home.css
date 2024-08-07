@@ -1,16 +1,19 @@
 .products-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 50px;
     justify-content: center;
+    min-width: 60%;
+    margin-left: 20%;
   }
   
   .product {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 20px;
+    padding: 3rem;
     text-align: center;
     width: 200px;
+    
   }
   
   .product img {
@@ -19,17 +22,19 @@
     border-radius: 4px;
   }
   
-  .product button {
-    margin-top: 10px;
+  .product button {   
+    width:15rem;
+     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #28a745;
+    margin:0px 2rem; 
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border: none;   
+    cursor: pointer; 
+    background-color:rgb(145, 7, 145);
   }
   
   .product button:hover {
-    background-color: #218838;
+    background-color: rgb(87, 5, 87);
   }
+
   

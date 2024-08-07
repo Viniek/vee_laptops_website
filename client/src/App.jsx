@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Wishlist from './pages/Wishlist/Wishlist';
 import Contactus from './pages/Contactus/Contactus';
@@ -8,15 +8,20 @@ import CreateAccount from './pages/login/CreateAccount';
 import Admin from '../Components/AdminNav/Admin';
 import SignIn from './pages/login/SignIn';
 import AdminHome from './pages/Admin/AdminHome';
-import AdminUsers from '../src/pages/Admin/AdminUsers'
+import AdminUsers from './pages/Admin/AdminUsers';
 import AddAdmin from './pages/Admin/AddAdmin';
 import PostProduct from './pages/Admin/PostProduct';
+import Products from './pages/Products/Products';
+import EditProduct from './pages/Admin/EditProduct';
+import AddProduct from './pages/Admin/AddProduct/AddProduct';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
+      <Admin/>
       <Routes>
+      <Route path="/Products" element={<Products />} />
         <Route path="/home" element={<Home />} />
         <Route path="/SignIn" element={<SignIn />} />  
         <Route path="/AdminHome" element={<AdminHome />} />  
@@ -26,11 +31,20 @@ function App() {
         <Route path="/CreateAccount" element={<CreateAccount />} />              
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/contactus" element={<Contactus />} />
-        <Route path="/Admin" element={<Admin />} />
+        <Route path="/EditProduct" element={<EditProduct />} />
+        <Route path="/AddProduct" element={<AddProduct />} />
         <Route path="/" element={<Home />} /> 
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
+
+
+
+// function ConditionalAdminNav() {
+//   const location = useLocation();
+//   const isAdminPath = location.pathname.startsWith('/Admin') || location.pathname.startsWith('/AdminHome') || location.pathname.startsWith('/AdminUsers') || location.pathname.startsWith('/AddAdmin') || location.pathname.startsWith('/PostProduct');
+//   return isAdminPath ? <Admin /> : null;
+// }
 
 export default App;

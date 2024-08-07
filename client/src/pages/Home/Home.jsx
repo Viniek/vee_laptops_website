@@ -43,10 +43,10 @@ function Home() {
       {products && products.length > 0 ? (
         products.map((product) => (
           <div key={product.id} className='product'>
-            <p>{product.productName ?? 'No name available'}</p>
-            <h2>{product.productPrice?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) ?? 'No price available'}</h2>
-            <p>{product.productDescription ?? 'No description available'}</p>
-            <img src={product.productImage ?? 'default-image.png'} alt={`${product.productName} image`} />
+               <img src={product.productImage ?? 'default-image.png'} alt={`${product.productName} image`} />
+            <h2>{product.productName ?? 'No name available'}</h2>
+            <h3>{product.productPrice?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) ?? 'No price available'}</h3>
+            <p>{product.productDescription ?? 'No description available'}</p>         
             <p>{product.productsRemaining ?? 'No stock information'} remaining</p>
             <button onClick={() => addToCart(product)}>Add to cart</button>
           </div>
