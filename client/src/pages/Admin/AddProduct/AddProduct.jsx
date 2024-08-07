@@ -57,7 +57,7 @@ function AddProduct() {
             <label>Image</label>
             <input
               type="text"
-              name="image"
+              name="productImage"
               value={formik.values. productImage}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -131,9 +131,10 @@ function AddProduct() {
          
        
           {error && <p className="error">{error}</p>}
-          <button type="submit" className="EditProductbtn" disabled={loading}>
-            {loading ? "Please wait..." : "Update product"}
+          <button type="submit" className="AddProductbtn" disabled={loading} >
+            {loading ? "Please wait..." : "Add product"}
           </button>
+          <p className='addedToDbMessage'>{message}</p>
         </form>
      
     </>
