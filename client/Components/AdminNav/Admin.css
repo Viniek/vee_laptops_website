@@ -9,6 +9,7 @@
     padding: 6rem;    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 100vh;
+    
   }  
   
   .AdminNav a {
@@ -56,4 +57,26 @@ border-radius: 20px;
   }
   .usersContainer{
     margin-left: 30%;
+  }
+  .products-container{
+    margin-left:20%;
+  }
+  .AdminLogoutbtn{
+   /* border:none; */
+   display:flex;
+   align-items: left;
+   color:#861c86;
+   font-size: 25px;
+   border:none;
+   font-weight: 300;
+  }
+  .addProductbtn{
+    border: 1px solid #ddd;
+    border-radius: 4px;    
+    width: 220px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    font-size: 10rem;
+    padding:9rem;
   }

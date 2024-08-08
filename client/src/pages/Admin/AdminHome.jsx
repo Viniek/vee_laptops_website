@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import Admin from '../../../Components/AdminNav/Admin';
 import '../../../Components/AdminNav/Admin.css'
-import EditProduct from './EditProduct';
+import EditProduct from './EditProduct/EditProduct';
 
 function AdminHome() {
 const[products,setProducts]=useState([]);
@@ -113,7 +113,7 @@ const handleDeleteProduct= async(id)=>{
         {/* <button className='AddproductContainer' onClick={handleAddProduct}></button> */}
         {/* </Link> */}
         <Link to="/AddProduct">
-        <button className="addProductbtn">Add Post</button></Link>
+        <button className="addProductbtn">+</button></Link>
     </section>
   </>
   )

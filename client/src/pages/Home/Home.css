@@ -4,9 +4,9 @@
     gap: 50px;
     justify-content: center;
     min-width: 60%;
-    margin-left: 20%;
+    margin-top: 10rem;
   }
-  
+
   .product {
     border: 1px solid #ddd;
     border-radius: 4px;
