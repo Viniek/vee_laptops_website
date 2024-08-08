@@ -8,12 +8,15 @@ import CreateAccount from './pages/login/CreateAccount';
 import Admin from '../Components/AdminNav/Admin';
 import SignIn from './pages/login/SignIn';
 import AdminHome from './pages/Admin/AdminHome';
-import AdminUsers from './pages/Admin/AdminUsers';
-import AddAdmin from './pages/Admin/AddAdmin';
-import PostProduct from './pages/Admin/PostProduct';
+import AdminUsers from './pages/Admin/AdminUsers/AdminUsers'
+import AddAdmin from './pages/Admin/AddAdmin/AddAdmin';
 import Products from './pages/Products/Products';
 import EditProduct from './pages/Admin/EditProduct';
 import AddProduct from './pages/Admin/AddProduct/AddProduct';
+import ViewOrders from './pages/Admin/ViewOrders/ViewOrders';
+import ViewMessages from './pages/Admin/ViewMessages/ViewMessages';
+import Profile from './pages/Admin/ViewProfile/Profile';
+import Analytics from './pages/Admin/Analytics/Analytics';
 
 function App() {
   return (
@@ -26,13 +29,16 @@ function App() {
         <Route path="/SignIn" element={<SignIn />} />  
         <Route path="/AdminHome" element={<AdminHome />} />  
         <Route path="/AdminUsers" element={<AdminUsers />} />  
-        <Route path="/AddAdmin" element={<AddAdmin />} />  
-        <Route path="/PostProduct" element={<PostProduct />} />  
+        <Route path="/AddAdmin" element={<AddAdmin />} />    
         <Route path="/CreateAccount" element={<CreateAccount />} />              
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/contactus" element={<Contactus />} />
-        <Route path="/EditProduct" element={<EditProduct />} />
+        <Route path="/EditProduct/:id" element={<EditProduct />} />
         <Route path="/AddProduct" element={<AddProduct />} />
+        <Route path="/ViewOrders" element={<ViewOrders />} />
+        <Route path="/ViewMessages" element={<ViewMessages />} />
+        <Route path="/Profile/:userId" element={<Profile />} />
+        <Route path="/Analytics" element={<Analytics />} />
         <Route path="/" element={<Home />} /> 
       </Routes>
     </BrowserRouter>

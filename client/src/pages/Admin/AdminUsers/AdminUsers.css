@@ -1,0 +1,13 @@
+.usersContainer{
+ display:flex;
+ flex-direction: row;
+ flex-wrap: wrap;  
+ gap:3rem;
+ 
+}
+.users{
+    border:1px grey solid;
+    padding:2rem;
+    
+    
+}

@@ -1,4 +1,7 @@
-.AddProductForm{
+.editProfileContainer{
+    margin-left: 20%;
+}
+.editProfileContainer{
     display: flex;
     flex-direction:column ;
     align-items: center;
@@ -7,21 +10,21 @@
     background-color: rgb(240, 230, 230);
     padding:3rem;
 }
-.AddProductForm input{
+.editProfileContainer input{
 width:70rem;
 padding:2rem;
 margin-bottom: 3rem;
 }
-.AddProductForm label{
+.editProfileContainer label{
     font-weight: 550;
 }
-.AddProductForm form{   
+.editProfileContainer form{   
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.AddProductForm button{
+.editProfileContainer button{
     width:10rem;
    padding:1rem;
 }

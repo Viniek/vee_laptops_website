@@ -77,7 +77,7 @@ function Header() {
       <div className="auth">
         {isLoggedIn ? (
           <>
-            <span>Welcome, {user.fullname}</span>
+            <span>Welcome, {user.firstName || user.lastName}</span>
             <button onClick={handleLogout}>Logout</button>
           </>
         ) : (

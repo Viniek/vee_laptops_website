@@ -1,10 +1,11 @@
-import "./Login.css";
+import Admin from '../../../../Components/AdminNav/Admin'
+import './AddAdmin.css'
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function CreateAccount() {
+function AddAdmin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -19,10 +20,12 @@ function CreateAccount() {
         values,{withCredentials:true}
       );
 
-      console.log(response.data);
+      console.log(response.data.success);
 
-      if (response.data.success) {
-        navigate("/SignIn");
+      if (response.data.success===true) {
+        navigate("/AdminUsers");
+        formik.resetForm();
+        toast("Admin created successfully...")
       } else {
         setError(response.data.message);
       }
@@ -39,7 +42,7 @@ function CreateAccount() {
       lastName: "",
       email: "",
       password: "",
-      role:""
+      role:"admin"
     },
     onSubmit: handleSubmit,
     validate: (values) => {
@@ -79,10 +82,10 @@ function CreateAccount() {
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Create  Your Account Here!!</h2>
+        <h2>Add an Admin</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
-            <label for="firstname">First Name</label><br/>
+            <label for="firstName">First Name</label><br/>
             <input
               type="text"
               name="firstName"
@@ -99,7 +102,7 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
-            <label for="llastname">Last Name</label><br/>
+            <label for="lastName">Last Name</label><br/>
             <input
               type="text"
               name="lastName"
@@ -168,12 +171,9 @@ function CreateAccount() {
           </div>
 
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? "Please wait..." : "Signin"}
+            {loading ? "Please wait..." : "Add Admin"}
           </button>
 
-          <p>
-            Already have an account? <Link to="/SignIn">Sign up here</Link>
-          </p>
           {error && <p className="error">{error}</p>}
         </form>
       </section>
@@ -181,4 +181,4 @@ function CreateAccount() {
   );
 }
 
-export default CreateAccount;
+export default AddAdmin;

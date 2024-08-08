@@ -1,6 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
 const prisma = new PrismaClient();
-import bcrypt from'bcrypt'
+dotenv.config();
+
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -16,11 +20,11 @@ export const getAllUsers = async (req, res) => {
         if (users.length === 0) {
             res.status(404).json({ message: "No users found." });
         } else {
-            res.status(200).json({ users });
+             return res.status(200).json({ success:true, data: users });
         }
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({ message: "An error occurred while fetching users.", error: error.message });
+       return  res.status(500).json({ message: "An error occurred while fetching users."});
     }
 }
 
@@ -28,16 +32,15 @@ export const getAllUsers = async (req, res) => {
 export const getSingleUser=async (req,res)=>{
     const{id}=req.params;
     try {
-        const users= await prisma.users.findFirst({where:{id:id}});
-        if(!users){
-            res.status(404).json({message:"Oops!User not found..."})
-        }else{
-            res.status(200).json(users)
+        const user= await prisma.users.findFirst({where:{id:id}});
+        if(!user){
+          return  res.status(404).json({message:"Oops!User not found..."})
         }
-        res.status(200).json(users)
+        res.status(200).json({success:true, data:user,message:"user fetched successfully"})
     } catch (error) {
-        res.status(500).json({message:"Oops!An error Occured..."})
-        console.log(error.message);
+      console.log(error.message);
+       return res.status(500).json({message:"Oops!An error Occured..."})
+       
     }
 }
 
@@ -55,7 +58,7 @@ export async function CreateUser(req,res){
          }
      
      })
-     res.status(200).json(users)
+     res.status(200).json({success:true,data:users,message:"user created successfully.."})
     } catch (error) {
      res.status(500).json({message:"Oops!Error while creating user..."})
      console.log(error.message);
@@ -74,7 +77,7 @@ export const deleteUser=async (req, res) =>{
       res.status(200).json({ message: "User deleted successfully..." });
     } catch (error) {
       console.log(error.message);
-      res.status(500).json({  message: "Internal server error!" });
+     return res.status(500).json({  message: "Internal server error!" });
     }
   }
 
@@ -102,5 +105,55 @@ export const deleteUser=async (req, res) =>{
     } catch (error) {
       console.log(error.message);
       res.status(500).json({ success: false, message: "Internal server error!" });
+    }
+  }
+
+  export async function loginUser(req, res) {
+    const { email, password } = req.body;
+  
+    try {
+      // Find the user by email
+      const user = await prisma.users.findFirst({
+        where: { email },
+      });
+  
+      // Check if the user exists
+      if (!user) {
+        return res.status(404).json({ success: false, message: 'User not found' });
+      }
+  
+      // Compare the provided password with the hashed password
+      const passwordMatch = bcrypt.compareSync(password, user.password);
+  
+      if (!passwordMatch) {
+        return res.status(401).json({ success: false, message: 'Wrong email or password' });
+      }
+  
+      // Create JWT payload
+      const payload = {
+        id: user.id,
+        role: user.role,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role:user.role,
+      };
+  
+      // Sign the token
+      const token = jwt.sign(payload, process.env.JWT_SECRET);
+  
+      console.log(token);
+  
+      // Set the token in an HTTP-only cookie
+      res.cookie('access_token', token, {
+        httpOnly: true,
+        // secure: process.env.NODE_ENV === 'production', // Set to true in production
+        // sameSite: 'Strict', // Adjust as needed
+      });
+  
+      res.status(200).json({ success: true, data: payload });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({ success: false, message: 'Internal server error' });
     }
   }

@@ -1,8 +1,8 @@
-/* Header.css */
+
 .navlink {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 6rem;
   justify-content: center;
   padding: 1rem 6rem; /* Adjust padding to fit your design */
   position: fixed;
@@ -41,4 +41,6 @@
 .auth button {
   background-color: red;
   color: white;
+  padding:1rem 3rem;
+  border-radius: 50px;
 }
