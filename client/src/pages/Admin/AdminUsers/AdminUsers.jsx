@@ -21,7 +21,7 @@ function AdminUsers() {
       try {
         setLoading(true)
         const response=await axios.get("http://localhost:4000/users/AllUsers",{withCredentials:true})
-
+console.log(response);
      
         setUsers(response.data.data);
      

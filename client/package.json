@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.0",
     "react-simple-toasts": "^5.10.1",
+    "yup": "^1.4.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
