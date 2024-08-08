@@ -37,7 +37,7 @@ function App() {
         <Route path="/AddProduct" element={<AddProduct />} />
         <Route path="/ViewOrders" element={<ViewOrders />} />
         <Route path="/ViewMessages" element={<ViewMessages />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Profile/:userId" element={<Profile />} />
         <Route path="/Analytics" element={<Analytics />} />
         <Route path="/" element={<Home />} /> 
       </Routes>

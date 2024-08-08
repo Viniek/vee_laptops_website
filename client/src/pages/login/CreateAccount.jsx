@@ -172,7 +172,7 @@ function CreateAccount() {
           </button>
 
           <p>
-            Already have an account? <Link to="/SignIn">Sign in here</Link>
+            Already have an account? <Link to="/SignIn">Sign up here</Link>
           </p>
           {error && <p className="error">{error}</p>}
         </form>

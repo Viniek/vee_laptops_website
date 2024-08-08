@@ -46,7 +46,7 @@ function AdminUsers() {
   <section className='usersContainer'>
  
 {users.map((user)=>(
-<div key ={users.id} className='users'>
+<div className='users' key={users.id}>
 <p>{user.firstName}</p>
 <p>{user.lastName}</p>
 <p>{user.email }</p>

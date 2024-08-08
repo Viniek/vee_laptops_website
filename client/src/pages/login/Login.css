@@ -4,7 +4,8 @@
     align-items: center;
     gap:3rem;
     justify-content: center;
-    
+    padding: 3rem;
+    background-color: rgb(240, 230, 230);
 }
 .schedule_a_visit input{
 width:70rem;

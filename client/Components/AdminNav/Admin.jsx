@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import './Admin.css'
-import { NavLink } from 'react-router-dom';
-
+import { NavLink ,Link} from 'react-router-dom';
+import useUserStore from "../../store/useUserStore";
 
 
 function Admin() {
+  const user = useUserStore((state)=>state.user)
+  console.log(user);
   return (
    <>
       <div className='AdminNav'>
@@ -15,7 +17,7 @@ function Admin() {
         <NavLink to="/AddProduct" className={({ isActive }) => (isActive ? 'active' : '')}>Post a Product</NavLink>
         <NavLink to="/ViewOrders" className={({ isActive }) => (isActive ? 'active' : '')}>View Orders</NavLink>
         <NavLink to="/ViewMessages" className={({ isActive }) => (isActive ? 'active' : '')}>View Messages</NavLink>
-        <NavLink to="/Profile" className={({ isActive }) => (isActive ? 'active' : '')}>Profile</NavLink>
+        <NavLink to={`/Profile/${user.id}`}className={({ isActive }) => (isActive ? 'active' : '')}>Profile</NavLink>
         <NavLink to="/Analytics" className={({ isActive }) => (isActive ? 'active' : '')}>Analytics</NavLink>
         <NavLink to="/AddProduct" className={({ isActive }) => (isActive ? 'active' : '')}>Log Out</NavLink>
       </div>

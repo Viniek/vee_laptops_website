@@ -4,7 +4,8 @@
     align-items: center;
     gap:3rem;
     justify-content: center;
-    
+    background-color: rgb(240, 230, 230);
+    padding:3rem;
 }
 .AddProductForm input{
 width:70rem;
