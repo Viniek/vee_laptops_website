@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import Admin from '../../../Components/AdminNav/Admin';
 import '../../../Components/AdminNav/Admin.css'
-import EditProduct from './EditProduct';
+import EditProduct from './EditProduct/EditProduct';
 
 function AdminHome() {
 const[products,setProducts]=useState([]);

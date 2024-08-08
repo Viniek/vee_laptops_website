@@ -11,7 +11,7 @@ import AdminHome from './pages/Admin/AdminHome';
 import AdminUsers from './pages/Admin/AdminUsers/AdminUsers';
 import AddAdmin from './pages/Admin/AddAdmin/AddAdmin';
 import Products from './pages/Products/Products';
-import EditProduct from './pages/Admin/EditProduct';
+import EditProduct from './pages/Admin/EditProduct/EditProduct';
 import AddProduct from './pages/Admin/AddProduct/AddProduct';
 import ViewOrders from './pages/Admin/ViewOrders/ViewOrders';
 import ViewMessages from './pages/Admin/ViewMessages/ViewMessages';
