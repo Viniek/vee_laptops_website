@@ -10,16 +10,17 @@ function Admin() {
       <div className='AdminNav'>
        
       <NavLink to="/AdminHome" className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
-      <NavLink to="/AdminUsers" className={({ isActive }) => (isActive ? 'active' : '')}>AdminUsers</NavLink>     
-        <NavLink to="/AddAdmin" className={({ isActive }) => (isActive ? 'active' : '')}>AddAdmin</NavLink>
-        <NavLink to="/AddProduct" className={({ isActive }) => (isActive ? 'active' : '')}>PostProduct</NavLink>
+      <NavLink to="/AdminUsers" className={({ isActive }) => (isActive ? 'active' : '')}>All Users</NavLink>     
+        <NavLink to="/AddAdmin" className={({ isActive }) => (isActive ? 'active' : '')}>Add an Admin</NavLink>
+        <NavLink to="/AddProduct" className={({ isActive }) => (isActive ? 'active' : '')}>Post a Product</NavLink>
+        <NavLink to="/ViewOrders" className={({ isActive }) => (isActive ? 'active' : '')}>View Orders</NavLink>
+        <NavLink to="/ViewMessages" className={({ isActive }) => (isActive ? 'active' : '')}>View Messages</NavLink>
+        <NavLink to="/Profile" className={({ isActive }) => (isActive ? 'active' : '')}>Profile</NavLink>
+        <NavLink to="/Analytics" className={({ isActive }) => (isActive ? 'active' : '')}>Analytics</NavLink>
+        <NavLink to="/AddProduct" className={({ isActive }) => (isActive ? 'active' : '')}>Log Out</NavLink>
       </div>
 
-      <p>b</p>
-      <p>b</p>
-      <p>b</p>
-      <p>b</p>
-      <p>b</p>
+      <p>b</p><br/><br/><br/>     
       <p>b</p>
           </>
       

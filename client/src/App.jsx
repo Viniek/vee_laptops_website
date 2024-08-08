@@ -13,6 +13,10 @@ import AddAdmin from './pages/Admin/AddAdmin/AddAdmin';
 import Products from './pages/Products/Products';
 import EditProduct from './pages/Admin/EditProduct';
 import AddProduct from './pages/Admin/AddProduct/AddProduct';
+import ViewOrders from './pages/Admin/ViewOrders/ViewOrders';
+import ViewMessages from './pages/Admin/ViewMessages/ViewMessages';
+import Profile from './pages/Admin/ViewProfile/Profile';
+import Analytics from './pages/Admin/Analytics/Analytics';
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/EditProduct/:id" element={<EditProduct />} />
         <Route path="/AddProduct" element={<AddProduct />} />
+        <Route path="/ViewOrders" element={<ViewOrders />} />
+        <Route path="/ViewMessages" element={<ViewMessages />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Analytics" element={<Analytics />} />
         <Route path="/" element={<Home />} /> 
       </Routes>
     </BrowserRouter>
