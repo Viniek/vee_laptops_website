@@ -39,6 +39,11 @@ function Home() {
   }
 
   return (
+    
+      <> 
+    
+  
+  
     <div className='products-container'>
       {products && products.length > 0 ? (
         products.map((product) => (
@@ -55,6 +60,8 @@ function Home() {
         <p>No products available.</p>
       )}
     </div>
+ 
+    </>
   );
 }
 

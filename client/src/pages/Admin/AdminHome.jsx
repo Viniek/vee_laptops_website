@@ -113,7 +113,7 @@ const handleDeleteProduct= async(id)=>{
         {/* <button className='AddproductContainer' onClick={handleAddProduct}></button> */}
         {/* </Link> */}
         <Link to="/AddProduct">
-        <button className="addProductbtn">Add Post</button></Link>
+        <button className="addProductbtn">+</button></Link>
     </section>
   </>
   )
