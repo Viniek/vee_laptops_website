@@ -30,4 +30,16 @@ export const getSingleCartProduct=async (req,res)=>{
     }
 }
 
-export
+export const createCartProduct=async (req,res)=>{
+    const{userid,user,productid,product,creaeAt }=req.body;
+    try {
+        if(!userid||user||productid||product){
+            return res.status(404).json({success:false,message:"Fill out all the required fields..."})
+        }
+        const newCartProduct=await prisma.cart.create({where:{id:id},
+        data:{userid,user,productid,product,creaeAt}})
+        return res.status(200).json({success:true,message:"Cart Product created successfully...",data:newCartProduct})
+    } catch (error) {
+        res.status(500).json({success:false,message:"Error creating Cart Product..."})
+    }
+}
