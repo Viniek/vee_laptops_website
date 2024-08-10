@@ -16,6 +16,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.0",
+    "react-simple-toast": "^1.0.10",
     "react-simple-toasts": "^5.10.1",
     "yup": "^1.4.0",
     "zustand": "^4.5.4"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import useUserStore from '../../../store/useUserStore';
+import toast from "react-simple-toasts";
 import './Home.css';
 
 function Home() {
@@ -25,10 +26,6 @@ function Home() {
     getAllItems();
   }, []);
 
-  const addToCart = (product) => {
-    console.log(`Added ${product.productName} to cart`);
-    // Add logic to update the cart state or make an API call to add the item to the cart
-  };
 
   if (loading) {
     return <p>Loading products...</p>;
@@ -38,11 +35,35 @@ function Home() {
     return <p>{error}</p>;
   }
 
+  const AddToCart = async (productId) => {
+    try {
+      setLoading(true);
+      setError("");
+  
+      const response = await axios.post(
+        `http://localhost:4000/cart/AddToCart`,
+        { productid: productId }, // Sending productId as part of the request body
+        { withCredentials: true }
+      );
+  
+      console.log(response.data);
+  
+      if (response.data.success) { // Checking for 'success' instead of 'data'
+        toast("Item Added to cart!!");
+      } else {
+        setError(response.data.message);
+      }
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+  
+
   return (
     
-      <> 
-    
-  
+      <>  
   
     <div className='productss-container'>
       {products && products.length > 0 ? (
@@ -53,7 +74,11 @@ function Home() {
             <h3>{product.productPrice?.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) ?? 'No price available'}</h3>
             <p>{product.productDescription ?? 'No description available'}</p>         
             <p>{product.productsRemaining ?? 'No stock information'} remaining</p>
-            <button onClick={() => addToCart(product)}>Add to cart</button>
+            {/* <button onClick={() => AddToCart(product)}>Add to cart</button> */}
+
+          <button onClick={() => AddToCart(product.id)}>Add to cart</button>
+
+
           </div>
         ))
       ) : (
