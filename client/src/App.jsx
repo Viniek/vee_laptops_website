@@ -17,6 +17,7 @@ import ViewOrders from './pages/Admin/ViewOrders/ViewOrders';
 import ViewMessages from './pages/Admin/ViewMessages/ViewMessages';
 import Profile from './pages/Admin/ViewProfile/Profile';
 import Analytics from './pages/Admin/Analytics/Analytics';
+import Cart from './pages/Cart/Cart';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/Products" element={<Products />} />
         <Route path="/home" element={<Home />} />
         <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/Cart" element={<Cart />} />
         <Route path="/AdminHome" element={<AdminHome />} />
         <Route path="/AdminUsers" element={<AdminUsers />} />
         <Route path="/AddAdmin" element={<AddAdmin />} />

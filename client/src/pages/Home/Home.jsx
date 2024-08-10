@@ -44,7 +44,7 @@ function Home() {
     
   
   
-    <div className='products-container'>
+    <div className='productss-container'>
       {products && products.length > 0 ? (
         products.map((product) => (
           <div key={product.id} className='product'>

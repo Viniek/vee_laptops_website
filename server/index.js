@@ -1,6 +1,7 @@
 import express from "express";
 import productsrouter from "./routes/products.routes.js";
 import usersroutes from "./routes/usersroutes.js";
+import cartRouter from "./routes/cartroutes.js";
 import cors from "cors"
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/products",productsrouter)
 app.use("/users",usersroutes)
+app.use("/cart",cartRouter)
 
 
 app.listen(4000, () => {
