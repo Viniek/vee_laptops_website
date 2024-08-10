@@ -1,0 +1,13 @@
+ <div className='cartSection'>
+
+      {cartItems.map((product) => (
+        <div className='cartProducts' key={product.id}> 
+               
+
+           <p>{product.product.productName}</p>
+          <p>{product.product.productPrice}</p> 
+        </div>
+      ))}
+    </div>
+  );
+}
