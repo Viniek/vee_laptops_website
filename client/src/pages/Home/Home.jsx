@@ -42,13 +42,13 @@ function Home() {
   
       const response = await axios.post(
         `http://localhost:4000/cart/AddToCart`,
-        { productid: productId }, // Sending productId as part of the request body
+        { productid: productId }, 
         { withCredentials: true }
       );
   
       console.log(response.data);
   
-      if (response.data.success) { // Checking for 'success' instead of 'data'
+      if (response.data.success) { 
         toast("Item Added to cart!!");
       } else {
         setError(response.data.message);
@@ -76,7 +76,7 @@ function Home() {
             <p>{product.productsRemaining ?? 'No stock information'} remaining</p>
             {/* <button onClick={() => AddToCart(product)}>Add to cart</button> */}
 
-          <button onClick={() => AddToCart(product.id)}>Add to cart</button>
+            <button onClick={() => AddToCart(product.id)}>Add to cart</button>
 
 
           </div>
