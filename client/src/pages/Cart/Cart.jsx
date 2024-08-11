@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useUserStore from '../../../store/useUserStore';
 import axios from 'axios';
 import toast from "react-simple-toasts"; 
+import './Cart.css'
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -77,7 +78,7 @@ function Cart() {
 
   return (
     <div className='cartSection'>
-      <table>
+      <table classname="cartTable">
         <thead>
           <tr>
             <th>Product Name</th>

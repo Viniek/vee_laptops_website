@@ -1,3 +1,8 @@
-.cartSection{
-    margin-top: 90rem;
+.cartSection {
+    margin-top: 100px; 
+    padding-top: 20px; 
+  }
+  .cartSection table th, 
+.cartSection table td {
+  padding: 10px 20px; /* Adjust the values as needed */
 }
