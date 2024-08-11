@@ -6,14 +6,9 @@ import useUserStore from '../../../../store/useUserStore';
 import Admin from '../../../../Components/AdminNav/Admin';
 import './EditProduct.css'
 
-const cloudname = 'dgn62le6w';
-const pretest = 'pretest';
-
 function EditProduct() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [imageLoading, setImageLoading] = useState(false);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [error, setError] = useState("");
   const { id } = useParams(); 
   const navigate = useNavigate();
@@ -24,7 +19,6 @@ function EditProduct() {
       try {
         const response = await axios.get(`http://localhost:4000/products/getOneProduct/${id}`, { withCredentials: true });
         setItem(response.data);
-        setUploadedImageUrl(response.data.productImage); // Set initial image URL
         setLoading(false);
       } catch (error) {
         setError("Error fetching item.");
@@ -34,27 +28,6 @@ function EditProduct() {
 
     fetchItem();
   }, [id]);
-
-  const handleImageUpload = async (event) => {
-    const file = event.currentTarget.files[0];
-    if (!file) return;
-
-    const payload = new FormData();
-    payload.append('file', file);
-    payload.append('upload_preset', pretest);
-
-    try {
-      setImageLoading(true);
-      const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudname}/upload`, payload);
-      setUploadedImageUrl(response.data.secure_url);
-      formik.setFieldValue("productImage", response.data.secure_url);
-    } catch (error) {
-      console.error("Image upload error:", error);
-      setError("Image upload failed. Please try again.");
-    } finally {
-      setImageLoading(false);
-    }
-  };
 
   const handleSubmit = async (values) => {
     if (users.role === "admin") {
@@ -80,7 +53,7 @@ function EditProduct() {
 
   const formik = useFormik({
     initialValues: {
-      productImage: uploadedImageUrl || "",
+      productImage: item?.productImage || "",
       productName: item?.productName || "",
       productPrice: item?.productPrice || "",
       productDescription: item?.productDescription || "",
@@ -107,24 +80,19 @@ function EditProduct() {
       <div className='editItemContainer'>
         <h1>Edit Product</h1>
         <form onSubmit={formik.handleSubmit}>
+          {/* Same fields as AddProduct but pre-filled with product data */}
           <div className="EditProducts">
             <label>Product Image</label>
             <input
-              type="file"
+              type="text"
               name="productImage"
-              onChange={handleImageUpload}
+              value={formik.values.productImage}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              required
             />
-            <button type="button" onClick={handleImageUpload} disabled={imageLoading}>
-              {imageLoading ? "Uploading..." : "Upload Image"}
-            </button>
-            {uploadedImageUrl && (
-              <div>
-                <p>Uploaded Image URL: <a href={uploadedImageUrl} target="_blank" rel="noopener noreferrer">{uploadedImageUrl}</a></p>
-                <img src={uploadedImageUrl} alt="Uploaded" className='imageresult' />
-              </div>
-            )}
             {formik.touched.productImage && formik.errors.productImage && (
-              <p className="error">{formik.errors.productImage}</p>
+              <p>{formik.errors.productImage}</p>
             )}
           </div>
 
@@ -139,7 +107,7 @@ function EditProduct() {
               required
             />
             {formik.touched.productName && formik.errors.productName && (
-              <p className="error">{formik.errors.productName}</p>
+              <p>{formik.errors.productName}</p>
             )}
           </div>
 
@@ -154,7 +122,7 @@ function EditProduct() {
               required
             />
             {formik.touched.productPrice && formik.errors.productPrice && (
-              <p className="error">{formik.errors.productPrice}</p>
+              <p>{formik.errors.productPrice}</p>
             )}
           </div>
 
@@ -169,7 +137,7 @@ function EditProduct() {
               required
             />
             {formik.touched.productDescription && formik.errors.productDescription && (
-              <p className="error">{formik.errors.productDescription}</p>
+              <p>{formik.errors.productDescription}</p>
             )}
           </div>
 
@@ -184,7 +152,7 @@ function EditProduct() {
               required
             />
             {formik.touched.productsRemaining && formik.errors.productsRemaining && (
-              <p className="error">{formik.errors.productsRemaining}</p>
+              <p>{formik.errors.productsRemaining}</p>
             )}
           </div>         
        

@@ -20,7 +20,10 @@ function Cart() {
       try {
         const response = await axios.get('http://localhost:4000/cart/cartProducts', { withCredentials: true });
         const itemsWithQuantity = response.data.data.map(item => ({ ...item, quantity: 1 })); // Initialize with quantity 1
-        setCartItems(itemsWithQuantity); 
+        setCartItems(itemsWithQuantity);
+        if (itemsWithQuantity.length === 0) {
+          toast("No items in your cart");
+        }
       } catch (error) {
         setError("Failed to fetch cart items");
       } finally {
@@ -54,6 +57,9 @@ function Cart() {
       if (response.data.success) {
         setCartItems(prevItems => prevItems.filter(item => item.id !== id));
         toast("Product deleted successfully...");
+        if (cartItems.length === 1) {
+          toast("No items in your cart");
+        }
       } else {
         toast("Error while deleting product");
       }
@@ -83,34 +89,37 @@ function Cart() {
   return (
     <div className='cartSection'>
       <h3>Total Items: {calculateTotalItems()}</h3>
-      <table className="cartTable">
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Product Price</th>
-            <th>Quantity</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cartItems.map((product) => (
-            <tr key={product.id}>
-              <td>{product.product.productName}</td>
-              <td>{product.product.productPrice}</td>
-              <td>
-                <button onClick={() => decreaseQuantity(product.id)}>-</button>
-                {product.quantity}
-                <button onClick={() => increaseQuantity(product.id)}>+</button>
-              </td>
-              <td>
-                <button onClick={() => deleteCartItem(product.id)}>Delete</button>
-              </td>
+      {cartItems.length === 0 ? (
+        <p>No items in your cart</p>
+      ) : (
+        <table className="cartTable">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Product Price</th>
+              <th>Quantity</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {cartItems.map((product) => (
+              <tr key={product.id}>
+                <td>{product.product.productName}</td>
+                <td>{product.product.productPrice}</td>
+                <td>
+                  <button onClick={() => decreaseQuantity(product.id)}>-</button>
+                  {product.quantity}
+                  <button onClick={() => increaseQuantity(product.id)}>+</button>
+                </td>
+                <td>
+                  <button onClick={() => deleteCartItem(product.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       <h3>Total Price: ${calculateTotalPrice().toFixed(2)}</h3>
-      
     </div>
   );
 }
