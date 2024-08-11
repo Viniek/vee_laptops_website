@@ -8,6 +8,7 @@
 }
 .search {
 border:1px black solid;
+border-radius: 50px;
 display:flex;
 flex-direction: row;
 align-items: center;
