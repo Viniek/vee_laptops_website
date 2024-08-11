@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Admin from '../../../Components/AdminNav/Admin';
 import '../../../Components/AdminNav/Admin.css'
 import EditProduct from './EditProduct/EditProduct';
+import { useParams } from 'react-router-dom';
 
 function AdminHome() {
 const[products,setProducts]=useState([]);
