@@ -84,7 +84,7 @@ export const deleteUser=async (req, res) =>{
   export const UpdateUser=async(req, res)=> {
     const { id } = req.params;
     const { firstName,lastName,email, password,role } = req.body;
-    console.log(req.body);
+ 
     try {
       const UserExist = await prisma.users.findFirst({ where: { id: id } });
       if (!UserExist) {

@@ -12,3 +12,4 @@ router.delete("/delete/:id",deleteUser)
 router.patch("/UpdateUser/:id",UpdateUser)
 router.post("/Login",loginUser)
 export default router;
+ 

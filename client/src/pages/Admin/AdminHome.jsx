@@ -38,7 +38,6 @@ useEffect(() => {
   async function getAllProducts(){
     try {
       const response=await axios.get("http://localhost:4000/products/AllProducts")
-      console.log(response);
       setProducts(response.data);
     } catch (error) {
       console.error("An error occurred while fetching products:", error);
