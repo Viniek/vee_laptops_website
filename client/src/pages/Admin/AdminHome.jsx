@@ -84,7 +84,7 @@ const handleDeleteProduct= async(id)=>{
 }
   return (
   <>
-   <section className='products-container'>
+   <section className='adminProducts-container'>
       {products && products.length > 0 ? (
         products.map((product) => (
           <div key={product.id} className='product'>

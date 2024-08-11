@@ -1,5 +1,5 @@
 import React from 'react'
-import laptop1 from '../../assets/laptop5.jpeg'
+import laptop1 from '../../assets/veelaptop.avif'
 import testimony from '../../assets/linkeddp latest.jpg'
 import { Link } from 'react-router-dom'
 import './Wishlist.css'
@@ -9,7 +9,7 @@ function Hero() {
    <>
    <div className='Hero'></div>
 <div className='welcome'>
-    <img src={laptop1}/>
+    {/* <img src={laptop1}/> */}
     <div className='welcomeText'>
     <h3>Welcome to VEE LAPTOPS</h3>
     <h2><i>Top Tier Laptops</i></h2>
