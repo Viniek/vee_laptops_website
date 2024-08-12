@@ -7,6 +7,7 @@ import Header from '../Components/Header/Header';
 import CreateAccount from './pages/login/CreateAccount';
 import SignIn from './pages/login/SignIn';
 import Admin from '../Components/AdminNav/Admin';
+import Footer from '../Components/Footer/Footer';
 import AdminHome from './pages/Admin/AdminHome';
 import AdminUsers from './pages/Admin/AdminUsers/AdminUsers';
 import AddAdmin from './pages/Admin/AddAdmin/AddAdmin';
@@ -44,6 +45,7 @@ function App() {
         <Route path="/Analytics" element={<Analytics />} />
         <Route path="/" element={<Home />} />
       </Routes>
+      <Route path="/Footer" element={<Footer />} />
     </BrowserRouter>
   );
 }
