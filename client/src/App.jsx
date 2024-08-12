@@ -45,7 +45,7 @@ function App() {
         <Route path="/Analytics" element={<Analytics />} />
         <Route path="/" element={<Home />} />
       </Routes>
-      <Route path="/Footer" element={<Footer />} />
+   <Footer/>
     </BrowserRouter>
   );
 }
