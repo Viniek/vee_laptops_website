@@ -1,27 +1,27 @@
-.AddProductForm{
-    display: flex;
-    flex-direction:column ;
-    align-items: center;
-    gap:3rem;
-    justify-content: center;
-    background-color: rgb(240, 230, 230);
-    padding:3rem;
+.AddProductForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  justify-content: center;
+  background-color: rgb(240, 230, 230);
+  padding: 3rem;
 }
-.AddProductForm input{
-width:70rem;
-padding:2rem;
-margin-bottom: 3rem;
+.AddProductForm input {
+  width: 70rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
 }
-.AddProductForm label{
-    font-weight: 550;
+.AddProductForm label {
+  font-weight: 550;
 }
-.AddProductForm form{   
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.AddProductForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.AddProductForm button{
-    width:10rem;
-   padding:1rem;
+.AddProductForm button {
+  width: 10rem;
+  padding: 1rem;
 }

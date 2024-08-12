@@ -1,82 +1,80 @@
 .AdminNav {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 5rem; /* Increase space between AdminNav and Header */
-    position: fixed;    
-    width: 20%;
-    background-color: #eee;
-    padding: 6rem;    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 100vh;
-    
-  }  
-  
-  .AdminNav a {
-    position: relative;
-    color: purple;
-    text-decoration: none;
-    font-size: 25px;
-  }  
-  .AdminNav .active {
-    color: rgb(243, 58, 228);
-  }
-  .adminbuttons{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    gap:1rem;
-    padding-left: 2rem;
- 
-  }
-  .adminbuttons button{
-    background-color: red;
-  }
-.editbtn{
-background-color: rgb(145, 7, 145);
-color: white;
-padding: .6rem 2rem;
-border: 2px pink solid;
-border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 5rem; /* Increase space between AdminNav and Header */
+  position: fixed;
+  width: 20%;
+  background-color: #eee;
+  padding: 6rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100vh;
 }
-.editbtn a{
+
+.AdminNav a {
+  position: relative;
+  color: purple;
+  text-decoration: none;
+  font-size: 25px;
+}
+.AdminNav .active {
+  color: rgb(243, 58, 228);
+}
+.adminbuttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-left: 2rem;
+}
+.adminbuttons button {
+  background-color: red;
+}
+.editbtn {
+  background-color: rgb(145, 7, 145);
+  color: white;
+  padding: 0.6rem 2rem;
+  border: 2px pink solid;
+  border-radius: 20px;
+}
+.editbtn a {
   text-decoration: none;
 }
- .AddproductContainer{
+.AddproductContainer {
   background-color: #eee;
-  border:.3px rgb(190, 184, 184) solid;
+  border: 0.3px rgb(190, 184, 184) solid;
   width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 70px;
-  font-weight:900;
- }
-  .AddproductContainer a{
-    text-decoration: none;
-  }
-  .usersContainer{
-    margin-left: 30%;
-  }
-  .products-container{
-    margin-left:20%;
-  }
-  .AdminLogoutbtn{
-   /* border:none; */
-   display:flex;
-   align-items: left;
-   color:#861c86;
-   font-size: 25px;
-   border:none;
-   font-weight: 300;
-  }
-  .addProductbtn{
-    border: 1px solid #ddd;
-    border-radius: 4px;    
-    width: 220px;
-    display:flex;
-    align-items: center;
-    justify-content:center;
-    font-size: 10rem;
-    padding:9rem;
-  }
+  font-weight: 900;
+}
+.AddproductContainer a {
+  text-decoration: none;
+}
+.usersContainer {
+  margin-left: 30%;
+}
+.products-container {
+  margin-left: 20%;
+}
+.AdminLogoutbtn {
+  /* border:none; */
+  display: flex;
+  align-items: left;
+  color: #861c86;
+  font-size: 25px;
+  border: none;
+  font-weight: 300;
+}
+.addProductbtn {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10rem;
+  padding: 9rem;
+}

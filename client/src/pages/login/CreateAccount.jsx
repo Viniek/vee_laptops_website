@@ -13,10 +13,11 @@ function CreateAccount() {
     try {
       setLoading(true);
       setError("");
-      
+
       const response = await axios.post(
         "http://localhost:4000/users/CreateUser",
-        values,{withCredentials:true}
+        values,
+        { withCredentials: true },
       );
 
       console.log(response.data);
@@ -39,7 +40,7 @@ function CreateAccount() {
       lastName: "",
       email: "",
       password: "",
-      role:""
+      role: "",
     },
     onSubmit: handleSubmit,
     validate: (values) => {
@@ -56,7 +57,7 @@ function CreateAccount() {
         errors.lastName = "Must have 3 characters or more.";
       }
 
-      if (values.email=== "") {
+      if (values.email === "") {
         errors.email = "Email address required.";
       } else if (!/\S+@\S+\.\S+/.test(values.email)) {
         errors.email = "Enter a valid email.";
@@ -79,10 +80,11 @@ function CreateAccount() {
   return (
     <>
       <section className="schedule_a_visit">
-        <h2>Create  Your Account Here!!</h2>
+        <h2>Create Your Account Here!!</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
-            <label for="firstname">First Name</label><br/>
+            <label for="firstname">First Name</label>
+            <br />
             <input
               type="text"
               name="firstName"
@@ -99,7 +101,8 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
-            <label for="llastname">Last Name</label><br/>
+            <label for="llastname">Last Name</label>
+            <br />
             <input
               type="text"
               name="lastName"
@@ -116,7 +119,8 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
-            <label for="email">Email Address</label><br/>
+            <label for="email">Email Address</label>
+            <br />
             <input
               type="email"
               name="email"
@@ -133,7 +137,8 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
-            <label for="password">Password</label><br/>
+            <label for="password">Password</label>
+            <br />
             <input
               type="password"
               name="password"
@@ -150,7 +155,8 @@ function CreateAccount() {
           </div>
 
           <div className="formfield">
-            <label for="confirmpassword">Confirm Password</label><br/>
+            <label for="confirmpassword">Confirm Password</label>
+            <br />
             <input
               type="password"
               name="confirmpassword"

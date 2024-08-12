@@ -1,10 +1,8 @@
-import React from 'react'
-import './ViewMessages.css'
+import React from "react";
+import "./ViewMessages.css";
 
 function ViewMessages() {
-  return (
-    <div>ViewMessages</div>
-  )
+  return <div>ViewMessages</div>;
 }
 
-export default ViewMessages
+export default ViewMessages;

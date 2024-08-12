@@ -4,7 +4,7 @@ import toast, { toastConfig } from "react-simple-toasts";
 import "react-simple-toasts/dist/theme/dark.css";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { url_api } from "../../../utils/config.js"
+import { url_api } from "../../../utils/config.js";
 import useUserStore from "../../../store/useUserStore";
 
 toastConfig({ theme: "Colored Themes" });
@@ -37,11 +37,9 @@ function SignIn() {
 
         if (data.data.role === "admin") {
           navigate("/AdminHome");
-        } 
-        else if (data.data.role === "seller") {
+        } else if (data.data.role === "seller") {
           navigate("/Sellers");
-        } 
-        else {
+        } else {
           navigate("/home");
         }
       } else {

@@ -1,5 +1,5 @@
-import Admin from '../../../../Components/AdminNav/Admin'
-import './AddAdmin.css'
+import Admin from "../../../../Components/AdminNav/Admin";
+import "./AddAdmin.css";
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,18 +14,19 @@ function AddAdmin() {
     try {
       setLoading(true);
       setError("");
-      
+
       const response = await axios.post(
         "http://localhost:4000/users/CreateUser",
-        values,{withCredentials:true}
+        values,
+        { withCredentials: true },
       );
 
       console.log(response.data.success);
 
-      if (response.data.success===true) {
+      if (response.data.success === true) {
         navigate("/AdminUsers");
         formik.resetForm();
-        toast("Admin created successfully...")
+        toast("Admin created successfully...");
       } else {
         setError(response.data.message);
       }
@@ -42,7 +43,7 @@ function AddAdmin() {
       lastName: "",
       email: "",
       password: "",
-      role:"admin"
+      role: "admin",
     },
     onSubmit: handleSubmit,
     validate: (values) => {
@@ -59,7 +60,7 @@ function AddAdmin() {
         errors.lastName = "Must have 3 characters or more.";
       }
 
-      if (values.email=== "") {
+      if (values.email === "") {
         errors.email = "Email address required.";
       } else if (!/\S+@\S+\.\S+/.test(values.email)) {
         errors.email = "Enter a valid email.";
@@ -85,7 +86,8 @@ function AddAdmin() {
         <h2>Add an Admin</h2>
         <form onSubmit={formik.handleSubmit}>
           <div className="formfield">
-            <label for="firstName">First Name</label><br/>
+            <label for="firstName">First Name</label>
+            <br />
             <input
               type="text"
               name="firstName"
@@ -102,7 +104,8 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
-            <label for="lastName">Last Name</label><br/>
+            <label for="lastName">Last Name</label>
+            <br />
             <input
               type="text"
               name="lastName"
@@ -119,7 +122,8 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
-            <label for="email">Email Address</label><br/>
+            <label for="email">Email Address</label>
+            <br />
             <input
               type="email"
               name="email"
@@ -136,7 +140,8 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
-            <label for="password">Password</label><br/>
+            <label for="password">Password</label>
+            <br />
             <input
               type="password"
               name="password"
@@ -153,7 +158,8 @@ function AddAdmin() {
           </div>
 
           <div className="formfield">
-            <label for="confirmpassword">Confirm Password</label><br/>
+            <label for="confirmpassword">Confirm Password</label>
+            <br />
             <input
               type="password"
               name="confirmpassword"
