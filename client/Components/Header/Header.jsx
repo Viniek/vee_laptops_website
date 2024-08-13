@@ -25,6 +25,10 @@ function Header() {
     navigate("/CreateAccount");
   };
 
+  function navigateToProfile(){
+    navigate("/Profile")
+  }
+
   return (
     <>
       <div className="navlink">
@@ -58,7 +62,7 @@ function Header() {
             <>
               <div className="headeractionbtn">
                 
-                <button className="profilebtn">Profile</button>
+                <button className="profilebtn" onClick={navigateToProfile}>Profile</button>
                 <button onClick={handleLogout} className="logoutbtn">Logout</button>
               </div>
             </>
