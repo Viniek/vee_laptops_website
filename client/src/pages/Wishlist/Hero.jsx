@@ -9,13 +9,24 @@ function Hero() {
    <>
    <div className='Hero'></div>
 <div className='welcome'>
-    {/* <img src={laptop1}/> */}
+   
     <div className='welcomeText'>
     <h3>Welcome to VEE LAPTOPS</h3>
     <h2><i>Top Tier Laptops</i></h2>
     <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, repellat facere, temporibus vel asperiores laborum quo totam possimus id ex beatae facilis. Beatae aliquid id, incidunt quae placeat corrupti officia.
     </h4>
     </div>
+
+<section className='subscribe'>
+   <Label for="Full Name">Full Name</Label>
+   <input type='text' placeholder='Ful Name'/>
+
+   <Label for="Email">Email</Label>
+   <input type='email' placeholder='Email'/>
+
+   <Label for="Full Name">Full Name</Label>
+   <input type='text' placeholder='Ful Name'/>
+</section>
 
    </div>
    <h1 className='Testimoniesheader'>Testimonies</h1>
@@ -57,7 +68,7 @@ function Hero() {
     </p>
     <p className='testimonyLinks'>
         <Link to="twitter">Twitter</Link>
-        <Link to="twitter">facebook</Link>
+        <Link to="facebook">facebook</Link>
         <Link to="twitter">instagram</Link>
     </p>
 </div>
