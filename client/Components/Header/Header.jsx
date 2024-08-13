@@ -1,77 +1,70 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useUserStore from "../../store/useUserStore";
-import { useNavigate } from "react-router-dom";
 import cart from "../../src/assets/cart.png";
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const user = useUserStore((state) => state.user);
+  const clearUser = useUserStore((state) => state.clearUserInformation);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Assuming user information is available in the user store
-    setIsLoggedIn(!!user); // Set logged in status based on user existence
+    setIsLoggedIn(!!user);
   }, [user]);
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    // Perform actual logout logic, like clearing user data or tokens
-    navigate("/Home");
+    clearUser();
+    navigate("/home");
   };
 
   const handleLoginSignup = () => {
     navigate("/CreateAccount");
   };
-
-  function navigateToProfile(){
-    navigate("/Profile")
+  function handleNavigateToLogin(){
+    navigate("/Login")
   }
 
-  return (
-    <>
-      <div className="navlink">
-        <NavLink
-          to="/Wishlist"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/Home"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Wishlist
-        </NavLink>
-        <NavLink
-          to="/Contactus"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Contact us
-        </NavLink>
-        <NavLink
-          to="/Cart"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          <img src={cart} />
-        </NavLink>
+  const navigateToProfile = () => {
+    if (user && user.id) {
+      navigate(`/Profile/${user.id}`);
+    }
+  };
 
-        <div className="auth">
-          {isLoggedIn ? (
-            <>
-              <div className="headeractionbtn">
-                
-                <button className="profilebtn" onClick={navigateToProfile}>Profile</button>
-                <button onClick={handleLogout} className="logoutbtn">Logout</button>
-              </div>
-            </>
-          ) : (
-            <button onClick={handleLoginSignup}>Login / Signup</button>
-          )}
-        </div>
+  return (
+    <div className="navlink">
+      <NavLink to="/home" className={({ isActive }) => (isActive ? "active" : "")}>
+        Home
+      </NavLink>
+      <NavLink to="/Wishlist" className={({ isActive }) => (isActive ? "active" : "")}>
+        Wishlist
+      </NavLink>
+      <NavLink to="/Contactus" className={({ isActive }) => (isActive ? "active" : "")}>
+        Contact us
+      </NavLink>
+      <NavLink to="/Cart" className={({ isActive }) => (isActive ? "active" : "")}>
+        <img src={cart} alt="Cart" />
+      </NavLink>
+
+      <div className="auth">
+        {isLoggedIn ? (
+          <div className="headeractionbtn">
+            <button className="profilebtn" onClick={navigateToProfile}>
+              Profile
+            </button>
+            <button onClick={handleLogout} className="logoutbtn">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <>
+          <button onClick={handleNavigateToLogin}>Login</button>
+          <button onClick={handleLoginSignup}> Signup</button>
+          </>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
