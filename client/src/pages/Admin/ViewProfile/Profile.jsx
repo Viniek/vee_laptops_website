@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import './Profile.css';
-import axios from 'axios';
-import useUserStore from '../../../../store/useUserStore';
-import { useFormik } from 'formik';
-import { useNavigate, useParams } from 'react-router-dom';
-import Admin from '../../../../Components/AdminNav/Admin';
-import { toast } from 'react-simple-toasts';
+import React, { useState, useEffect } from "react";
+import "./Profile.css";
+import axios from "axios";
+import useUserStore from "../../../../store/useUserStore";
+import { useFormik } from "formik";
+import { useNavigate, useParams } from "react-router-dom";
+import Admin from "../../../../Components/AdminNav/Admin";
+import { toast } from "react-simple-toasts";
 
 function Profile() {
   const [loading, setLoading] = useState(false);
@@ -15,24 +15,24 @@ function Profile() {
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
+      firstName: "",
+      lastName: "",
+      email: "",
     },
     validate: (values) => {
       const errors = {};
       if (!values.firstName) {
-        errors.firstName = 'First name is required';
+        errors.firstName = "First name is required";
       }
       if (!values.lastName) {
-        errors.lastName = 'Last name is required';
+        errors.lastName = "Last name is required";
       }
       if (!values.email) {
-        errors.email = 'Email is required';
+        errors.email = "Email is required";
       } else if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
       ) {
-        errors.email = 'Invalid email address';
+        errors.email = "Invalid email address";
       }
       return errors;
     },
@@ -42,18 +42,18 @@ function Profile() {
         const response = await axios.patch(
           `http://localhost:4000/users/UpdateUser/${userId}`,
           values,
-          { withCredentials: true }
+          { withCredentials: true },
         );
         if (response.data.success) {
-          toast('Profile Updated Successfully...');
+          toast("Profile Updated Successfully...");
           formik.resetForm();
-          navigate('/AdminUsers');
+          navigate("/AdminUsers");
         } else {
-          setError('An error occurred while updating profile...');
+          setError("An error occurred while updating profile...");
         }
       } catch (error) {
-        console.error('An error occurred updating profile', error);
-        setError('An error occurred while updating profile...');
+        console.error("An error occurred updating profile", error);
+        setError("An error occurred while updating profile...");
       } finally {
         setLoading(false);
       }
@@ -66,16 +66,16 @@ function Profile() {
         setLoading(true);
         const response = await axios.get(
           `http://localhost:4000/users/SingleUser/${userId}`,
-          { withCredentials: true }
+          { withCredentials: true },
         );
         if (response.data.success) {
           formik.setValues(response.data.data);
         } else {
-          setError('An error occurred while fetching user...');
+          setError("An error occurred while fetching user...");
         }
       } catch (error) {
-        console.error('An error occurred fetching user', error);
-        setError('An error occurred while fetching user...');
+        console.error("An error occurred fetching user", error);
+        setError("An error occurred while fetching user...");
       } finally {
         setLoading(false);
       }
@@ -136,7 +136,7 @@ function Profile() {
 
           {error && <p className="error">{error}</p>}
           <button type="submit" className="EditProductbtn" disabled={loading}>
-            {loading ? 'Please wait...' : 'Update profile'}
+            {loading ? "Please wait..." : "Update profile"}
           </button>
         </form>
       </div>

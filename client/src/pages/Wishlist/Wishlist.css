@@ -1,65 +1,63 @@
-.Hero{
-    background-image: url('../../assets/hero1.jpg');  
-   /* width:100%; */
-   height:100rem;
-    background-repeat: no-repeat; 
- 
+.Hero {
+  background-image: url("../../assets/hopes.png");
+  width: 100%;
+  height: 80rem;
+  background-repeat: no-repeat;
 }
-.welcome h2{
-    color:purple;
+.welcome h2 {
+  color: purple;
 }
-.welcome h3{
-    color:rgb(114, 14, 148);
+.welcome h3 {
+  color: rgb(114, 14, 148);
 }
-.welcome{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap:20rem;
-    border-top: 1px grey groove;
-    padding:3rem;
+.welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 20rem;
+  border-top: 1px grey groove;
+  padding: 3rem;
 }
-.welcome img{
-    width:50%;
-}
-
-.testimonycontainer{
-    display:flex;
-    flex-direction: column;
-    border:.1px grey solid;
-}
-.testimonies{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding:3rem;
-    gap:1rem;   
+.welcome img {
+  width: 50%;
 }
 
-.testimony{
-    display:flex;
-    flex-direction:row;   
-    padding:1rem;
-    gap:2rem;
-    border-bottom: 1px grey solid;
- 
+.testimonycontainer {
+  display: flex;
+  flex-direction: column;
+  border: 0.1px grey solid;
 }
- .testimony img{
-    width:40%;
-} 
- .testimonycontainer{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-} 
-.testimonyLinks{
-    display:flex;
-    flex-direction: row;
-    gap:2rem;
-    padding:2rem 6rem;
+.testimonies {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem;
+  gap: 1rem;
 }
-.testimonyLinks a{
-    text-decoration: none;
-    color:purple;
+
+.testimony {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  gap: 2rem;
+  border-bottom: 1px grey solid;
+}
+.testimony img {
+  width: 40%;
+}
+.testimonycontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonyLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem 6rem;
+}
+.testimonyLinks a {
+  text-decoration: none;
+  color: purple;
 }
