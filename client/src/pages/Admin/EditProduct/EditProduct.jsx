@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import useUserStore from "../../../../store/useUserStore";
-import Admin from "../../../../Components/AdminNav/Admin";
 import "./EditProduct.css";
 
 function EditProduct() {
@@ -87,7 +86,7 @@ function EditProduct() {
 
   return (
     <>
-      <Admin />
+    
       <div className="editItemContainer">
         <h1>Edit Product</h1>
         <form onSubmit={formik.handleSubmit}>
