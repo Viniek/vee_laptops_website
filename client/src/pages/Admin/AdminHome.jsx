@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Admin from "../../../Components/AdminNav/Admin";
-import "../../../Components/AdminNav/Admin.css";
-import EditProduct from "./EditProduct/EditProduct";
+
+import Admin from '../../../Components/AdminNav/Admin';
+import '../../../Components/AdminNav/Admin.css'
+import EditProduct from './EditProduct/EditProduct';
+import { useParams } from 'react-router-dom';
+
 
 function AdminHome() {
   const [products, setProducts] = useState([]);
@@ -85,6 +88,7 @@ function AdminHome() {
     }
   };
   return (
+
     <>
       <section className="products-container">
         {products && products.length > 0 ? (
@@ -106,6 +110,7 @@ function AdminHome() {
               <p>
                 {product.productsRemaining ?? "No stock information"} remaining
               </p>
+
 
               <div className="adminbuttons">
                 <Link to={`/EditProduct/${product.id}`} className="editbtn">
