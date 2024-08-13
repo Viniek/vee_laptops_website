@@ -61,4 +61,21 @@
   color: #fff;
   font-weight: 700;
 }
-
+.Signupbtn{
+background-color: rgb(149, 128, 168);
+color: white;
+}
+.Loginbtn{
+  background-color: purple;
+  color: white;
+}
+.loginSignupbtns{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.loginSignupbtns button{
+  padding: 1rem;
+}

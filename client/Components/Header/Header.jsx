@@ -23,7 +23,7 @@ function Header() {
     navigate("/CreateAccount");
   };
   function handleNavigateToLogin(){
-    navigate("/Login")
+    navigate("/SignIn")
   }
 
   const navigateToProfile = () => {
@@ -58,10 +58,10 @@ function Header() {
             </button>
           </div>
         ) : (
-          <>
-          <button onClick={handleNavigateToLogin}>Login</button>
-          <button onClick={handleLoginSignup}> Signup</button>
-          </>
+          <div className="loginSignupbtns">
+          <button onClick={handleNavigateToLogin} className="Loginbtn">Login</button>
+          <button onClick={handleLoginSignup} className="Signupbtn"> Signup</button>
+          </div>
         )}
       </div>
     </div>
