@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import axios from "axios";
-import useUserStore from "../../../../store/useUserStore";
 import { useFormik } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 import Admin from "../../../../Components/AdminNav/Admin";
-import { toast } from "react-simple-toasts";
+import {toast} from 'react-simple-toasts'
 
 function Profile() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { userId } = useParams();
-  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -45,15 +43,14 @@ function Profile() {
           { withCredentials: true },
         );
         if (response.data.success) {
-          toast("Profile Updated Successfully...");
-          formik.resetForm();
-          navigate("/AdminUsers");
+          toast("Profile Updated Successfully",{theme:"success"});
+
         } else {
-          setError("An error occurred while updating profile...");
+          setError("An error occurred while updating profile");
         }
       } catch (error) {
-        console.error("An error occurred updating profile", error);
-        setError("An error occurred while updating profile...");
+
+      toast("An error occurred while updating profile");
       } finally {
         setLoading(false);
       }
@@ -85,7 +82,6 @@ function Profile() {
 
   return (
     <>
-      <Admin />
       <div className="editProfileContainer">
         <h1>Edit Profile</h1>
         <form onSubmit={formik.handleSubmit}>
