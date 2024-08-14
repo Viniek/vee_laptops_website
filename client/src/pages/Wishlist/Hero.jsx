@@ -57,8 +57,8 @@ function Hero() {
           </p>
           <p className="testimonyLinks">
             <Link to="twitter">Twitter</Link>
-            <Link to="twitter">facebook</Link>
-            <Link to="twitter">instagram</Link>
+            <Link to="facebook">facebook</Link>
+            <Link to="instagram">instagram</Link>
           </p>
         </div>
 
