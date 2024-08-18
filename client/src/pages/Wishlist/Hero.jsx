@@ -17,16 +17,7 @@ function Hero() {
     </h4>
     </div>
 
-<section className='subscribe'>
-   <Label for="Full Name">Full Name</Label>
-   <input type='text' placeholder='Ful Name'/>
 
-   <Label for="Email">Email</Label>
-   <input type='email' placeholder='Email'/>
-
-   <Label for="Full Name">Full Name</Label>
-   <input type='text' placeholder='Ful Name'/>
-</section>
 
    </div>
    <h1 className='Testimoniesheader'>Testimonies</h1>
@@ -86,6 +77,19 @@ function Hero() {
     </p>
 </div>
    </div>
+
+   <section className='subscribe'>
+    <h2>Subscribe to our News Letter </h2>
+   <label for="Full Name">Full Name</label>
+   <input type='text' placeholder='Ful Name'/><br/>
+
+   <label for="Email">Email</label>
+   <input type='email' placeholder='Email'/><br/>
+
+   <label for="Full Name">Full Name</label>
+   <input type='text' placeholder='Ful Name'/><br/>
+   <button type='submit'>Submit</button>
+</section>
    </>
   )
 }

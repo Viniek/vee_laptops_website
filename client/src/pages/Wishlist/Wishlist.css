@@ -63,3 +63,25 @@
     text-decoration: none;
     color:purple;
 }
+.subscribe{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.subscribe h2{
+font-size:35px ;
+}
+.subscribe label{
+font-size: 30px;
+}
+.subscribe input{
+width:60rem;
+padding:2rem;
+align-items: center;
+font-size: 20px;
+border-right:purple .1px solid;
+border-left:purple .1px solid;
+border-bottom:purple .1px solid;
+border-top: grey .1px solid;
+}
