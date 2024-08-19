@@ -9,7 +9,7 @@ function Cart() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showOverlay, setShowOverlay] = useState(false); // State to control overlay visibility
-  const [selectedLocation, setSelectedLocation] = useState(''); // State to store selected location
+  const [enteredLocation, setEnteredLocation] = useState(''); // State to store entered location
   const userr = useUserStore((state) => state.user);
 
   useEffect(() => {
@@ -84,10 +84,17 @@ function Cart() {
     setShowOverlay(true); // Show overlay when checkout is clicked
   };
 
-  const handleLocationSelect = (location) => {
-    setSelectedLocation(location); // Set the selected location
-    setShowOverlay(false); // Hide overlay after selecting a location
-    toast(`Location selected: ${location}`);
+  const handleLocationChange = (e) => {
+    setEnteredLocation(e.target.value); // Update the entered location
+  };
+
+  const handleLocationSubmit = () => {
+    if (enteredLocation.trim() === '') {
+      toast("Please enter a valid location");
+    } else {
+      toast(`Location selected: ${enteredLocation}`);
+      setShowOverlay(false); // Close the overlay after submitting the location
+    }
   };
 
   const handleOverlayClose = () => {
@@ -144,12 +151,14 @@ function Cart() {
       {showOverlay && (
         <div className="overlay">
           <div className="overlayContent">
-            <h3>Select a Delivery Location</h3>
-            <ul>
-              <li onClick={() => handleLocationSelect('Location 1')}>Location 1</li>
-              <li onClick={() => handleLocationSelect('Location 2')}>Location 2</li>
-              <li onClick={() => handleLocationSelect('Location 3')}>Location 3</li>
-            </ul>
+            <h3>Enter a Delivery Location</h3>
+            <input 
+              type="text" 
+              value={enteredLocation} 
+              onChange={handleLocationChange} 
+              placeholder="Enter your location" 
+            />
+            <button onClick={handleLocationSubmit}>Submit</button>
             <button onClick={handleOverlayClose}>Close</button>
           </div>
         </div>
