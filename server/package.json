@@ -13,7 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@prisma/client": "^5.17.0",
+    "@prisma/client": "^5.18.0",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.6",
     "cookieparser": "^0.1.0",
@@ -22,5 +22,8 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "react-simple-toasts": "^5.10.1"
+  },
+  "devDependencies": {
+    "prisma": "^5.18.0"
   }
 }

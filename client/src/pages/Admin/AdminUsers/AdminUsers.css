@@ -1,26 +1,26 @@
 .usersTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-left: 10%;
-    scale:.8;
-    padding-right:4rem;
-  }
-  
-  .usersTable th, .usersTable td {
-    border: 1px solid grey;
-    padding: 0.5rem;
-    text-align: left;
-  }
-  
-  .usersTable th {
-    background-color: #f4f4f4;
-  }
-  
-  .usersTable tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .usersTable tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: 10%;
+  scale: 0.8;
+  padding-right: 4rem;
+}
+
+.usersTable th,
+.usersTable td {
+  border: 1px solid grey;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.usersTable th {
+  background-color: #f4f4f4;
+}
+
+.usersTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.usersTable tbody tr:hover {
+  background-color: #f1f1f1;
+}

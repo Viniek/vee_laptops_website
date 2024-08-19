@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import useUserStore from '../../../../store/useUserStore'; 
-import axios from 'axios';
-import './AdminUsers.css';
+import React, { useState, useEffect } from "react";
+import useUserStore from "../../../../store/useUserStore";
+import axios from "axios";
+import "./AdminUsers.css";
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -13,7 +13,10 @@ function AdminUsers() {
       if (user && user.role === "admin") {
         try {
           setLoading(true);
-          const response = await axios.get("http://localhost:4000/users/AllUsers", { withCredentials: true });
+          const response = await axios.get(
+            "http://localhost:4000/users/AllUsers",
+            { withCredentials: true },
+          );
           console.log(response);
           setUsers(response.data.data);
         } catch (error) {
@@ -30,11 +33,11 @@ function AdminUsers() {
 
   return (
     <>
-      <h1 className='usersContainer'>Vee users</h1>
+      <h1 className="usersContainer">Vee users</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table className='usersTable'>
+        <table className="usersTable">
           <thead>
             <tr>
               <th>First Name</th>

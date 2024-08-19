@@ -9,5 +9,5 @@ productsrouter.delete("/DeleteProduct/:id",DeleteProduct)
 productsrouter.get("/getOneProduct/:id",getOneProduct)
 productsrouter.patch("/updateProduct/:id",updateProduct)
 
-
+ 
 export default productsrouter;
