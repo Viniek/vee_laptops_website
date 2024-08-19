@@ -85,3 +85,7 @@ border-left:purple .1px solid;
 border-bottom:purple .1px solid;
 border-top: grey .1px solid;
 }
+.subscribe button{
+    width:20rem;
+    padding:1rem;
+}

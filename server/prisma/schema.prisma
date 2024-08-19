@@ -58,3 +58,8 @@ model cart {
   product   products      @relation(fields: [productid], references: [id])
   creaeAt   DateTime      @default(now())
 }
+model subscription {
+  id String @id @default(uuid())
+  email String
+
+}
