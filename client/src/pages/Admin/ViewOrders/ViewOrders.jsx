@@ -1,10 +1,8 @@
-import React from 'react'
-import './ViewOrders.css'
+import React from "react";
+import "./ViewOrders.css";
 
 function ViewOrders() {
-  return (
-    <div>ViewOrders</div>
-  )
+  return <div>ViewOrders</div>;
 }
 
-export default ViewOrders
+export default ViewOrders;

@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { useFormik } from 'formik';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import useUserStore from '../../../../store/useUserStore';
-import Admin from '../../../../Components/AdminNav/Admin';
-import './EditProduct.css'
+import React, { useState, useEffect } from "react";
+import { useFormik } from "formik";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import useUserStore from "../../../../store/useUserStore";
+import "./EditProduct.css";
 
 function EditProduct() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { id } = useParams(); 
+  const { id } = useParams();
   const navigate = useNavigate();
   const users = useUserStore((state) => state.user);
 
   useEffect(() => {
     async function fetchItem() {
       try {
-        const response = await axios.get(`http://localhost:4000/products/getOneProduct/${id}`, { withCredentials: true });
+        const response = await axios.get(
+          `http://localhost:4000/products/getOneProduct/${id}`,
+          { withCredentials: true },
+        );
         setItem(response.data);
         setLoading(false);
       } catch (error) {
@@ -34,10 +36,14 @@ function EditProduct() {
       try {
         setLoading(true);
         setError("");
-        const response = await axios.patch(`http://localhost:4000/products/updateProduct/${id}`, values, { withCredentials: true });
+        const response = await axios.patch(
+          `http://localhost:4000/products/updateProduct/${id}`,
+          values,
+          { withCredentials: true },
+        );
         if (response.data.success) {
           formik.resetForm();
-          navigate('/AdminHome'); 
+          navigate("/AdminHome");
         } else {
           setError("Failed to update item.");
         }
@@ -57,17 +63,21 @@ function EditProduct() {
       productName: item?.productName || "",
       productPrice: item?.productPrice || "",
       productDescription: item?.productDescription || "",
-      productsRemaining: item?.productsRemaining || ""     
+      productsRemaining: item?.productsRemaining || "",
     },
     enableReinitialize: true,
     onSubmit: handleSubmit,
     validate: (values) => {
       let errors = {};
-      if (!values.productImage) errors.productImage = "Product image is required";
+      if (!values.productImage)
+        errors.productImage = "Product image is required";
       if (!values.productName) errors.productName = "Product Name is required";
-      if (!values.productPrice) errors.productPrice = "Product Price is required";
-      if (!values.productDescription) errors.productDescription = "Product Description is required";
-      if (!values.productsRemaining) errors.productsRemaining = "Products Remaining is required";
+      if (!values.productPrice)
+        errors.productPrice = "Product Price is required";
+      if (!values.productDescription)
+        errors.productDescription = "Product Description is required";
+      if (!values.productsRemaining)
+        errors.productsRemaining = "Products Remaining is required";
       return errors;
     },
   });
@@ -76,8 +86,8 @@ function EditProduct() {
 
   return (
     <>
-      <Admin />
-      <div className='editItemContainer'>
+    
+      <div className="editItemContainer">
         <h1>Edit Product</h1>
         <form onSubmit={formik.handleSubmit}>
           {/* Same fields as AddProduct but pre-filled with product data */}
@@ -136,9 +146,10 @@ function EditProduct() {
               onBlur={formik.handleBlur}
               required
             />
-            {formik.touched.productDescription && formik.errors.productDescription && (
-              <p>{formik.errors.productDescription}</p>
-            )}
+            {formik.touched.productDescription &&
+              formik.errors.productDescription && (
+                <p>{formik.errors.productDescription}</p>
+              )}
           </div>
 
           <div className="EditProducts">
@@ -151,11 +162,12 @@ function EditProduct() {
               onBlur={formik.handleBlur}
               required
             />
-            {formik.touched.productsRemaining && formik.errors.productsRemaining && (
-              <p>{formik.errors.productsRemaining}</p>
-            )}
-          </div>         
-       
+            {formik.touched.productsRemaining &&
+              formik.errors.productsRemaining && (
+                <p>{formik.errors.productsRemaining}</p>
+              )}
+          </div>
+
           {error && <p className="error">{error}</p>}
           <button type="submit" className="EditProductbtn" disabled={loading}>
             {loading ? "Please wait..." : "Update Product"}
